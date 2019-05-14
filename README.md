@@ -37,7 +37,8 @@ Artificial neural networks (ANN) became a common solution for a wide variety of 
 The main contribution of this rule is the development of a crossbar circuit compatible training approach for multilayer perceptron (MLP) networks.
 #### *Multi-Layer Perceptron*
 In it's simplest form, feed-forward neural network can be represented by layers of neurons getting it's input values from a series of synapses containing weights which multiply the input from the last layer by vector multiplication. The output of the neuron can be mathematically expressed by 
-$$ f_{i} = \tanh(\beta u_{i}), with\, u_{i}=\sum_{j}W_{ij}X_{j} $$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=f_{i}&space;=&space;\tanh(\beta&space;u_{i}),&space;with\,&space;u_{i}=\sum_{j}W_{ij}X_{j}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f_{i}&space;=&space;\tanh(\beta&space;u_{i}),&space;with\,&space;u_{i}=\sum_{j}W_{ij}X_{j}" title="f_{i} = \tanh(\beta u_{i}), with\, u_{i}=\sum_{j}W_{ij}X_{j}" /></a>
 
 where $u_{i}$ and $f_{i}$ are the input and output of the $i$-th post-synaptic neuron, respectively, $X_j$ is the output of $j$-th pre-synaptic neuron, and $W_{ij}$ is the synaptic weight between $j$-th presynaptic and $i$-th post-synaptic neurons.
 
