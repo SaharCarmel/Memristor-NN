@@ -1,16 +1,32 @@
 import torch
+import sys
+import os
+import yaml
 import numpy as np
 from torch.autograd import Variable
-from sklearn.datasets import load_iris
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from matplotlib import pyplot as plt
+import torchvision.datasets as datasets
+os.chdir('code')
 import nn_modules
 
-def to_categorical(y, num_classes):
-    """ 1-hot encodes a tensor """
-    return np.eye(num_classes, dtype='uint8')[y]
+yamlFile = sys.argv[1]
+
+def load_param(yamlfile,version,parm_name):
+        version = 'version' + version
+        with open(yamlfile) as f:
+                data = yaml.load(f, Loader=yaml.FullLoader)
+                return data[version][parm_name]
+
+## Loading parameter
+batchSize = load_param(yamlFile,1,'batchSize')
+
+
+mnist = datasets.MNIST('./data',train=True,transform=None,download=True)
+test_loader = torch.utils.data.DataLoader(mnist,
+        batch_size=batchSize, shuffle=True)
 
 #batch size
 batch_size=10
