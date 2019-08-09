@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 
 class base_net(torch.nn.Module):
     def __init__(self):
@@ -22,3 +23,7 @@ class manhattan_net(torch.nn.Module):
         x = self.fc_pos(x) - self.fc_neg(x)
         #x = F.softmax(self.fc(x),0)
         return x
+
+    def update_weights(self):
+        self.fc_pos.weight.data -= 0.005*np.sign(self.fc_pos.weight.grad)
+        self.fc_neg.weight.data -= 0.005*np.sign(self.fc_neg.weight.grad)
