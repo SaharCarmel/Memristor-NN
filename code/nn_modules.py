@@ -6,12 +6,19 @@ import numpy as np
 class base_net(torch.nn.Module):
     def __init__(self):
         super(base_net, self).__init__()
-        self.fc = nn.Linear(4, 3)
+        self.fc1 = nn.Linear(784, 800)
+        self.fc2 = nn.Linear(800, 10)
 
     def forward(self, x):
-        x = self.fc(x)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+
         #x = F.softmax(self.fc(x),0)
         return x
+    
+    def update_weights(self,eta):
+         self.fc1.weight.data -= eta*self.fc1.weight.grad
+         self.fc2.weight.data -= eta*self.fc2.weight.grad
 
 class manhattan_net(torch.nn.Module):
     def __init__(self):
@@ -24,6 +31,6 @@ class manhattan_net(torch.nn.Module):
         #x = F.softmax(self.fc(x),0)
         return x
 
-    def update_weights(self):
-        self.fc_pos.weight.data -= 0.005*np.sign(self.fc_pos.weight.grad)
-        self.fc_neg.weight.data -= 0.005*np.sign(self.fc_neg.weight.grad)
+    def update_weights(self,eta):
+        self.fc_pos.weight.data -= eta*np.sign(self.fc_pos.weight.grad)
+        self.fc_neg.weight.data -= eta*np.sign(self.fc_neg.weight.grad)
