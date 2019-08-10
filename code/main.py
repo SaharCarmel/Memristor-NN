@@ -30,28 +30,6 @@ test_loader = torch.utils.data.DataLoader(mnist,
         batch_size=batchSize, shuffle=True)
 
 
-#loading iris data from sklearn
-iris = load_iris()
-r = torch.randperm(len(iris.data))
-p = int(np.ceil(len(iris.data)*0.1))
-
-x_train=iris.data[r[p:]]
-x_test=iris.data[r[:p]]
-y_train=iris.target[r[p:]]
-y_test=iris.target[r[:p]]
-
-#one hot encoding
-#y_data = to_categorical(y_data,3)
-
-#numpy to pytorch variable
-x_train = Variable(torch.from_numpy(x_train)).double()
-y_train = Variable(torch.from_numpy(y_train)).long()
-x_test = Variable(torch.from_numpy(x_test)).double()
-y_test = Variable(torch.from_numpy(y_test)).long()
-
-
-        
-
 model = nn_modules.manhattan_net().double()
 
 #binary cross entropy loss
