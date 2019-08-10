@@ -14,6 +14,10 @@ import nn_modules
 
 #yamlFile = sys.argv[1]
 
+## Checking if cuda available
+use_cuda = torch.cuda.is_available()
+device = torch.device("cuda" if use_cuda else "cpu")
+
 yamlFile= 'Parameters.yml'
 def load_param(yamlfile,version,parm_name):
         version = 'version' + str(version)
@@ -24,9 +28,13 @@ def load_param(yamlfile,version,parm_name):
 ## Loading parameter
 batchSize = load_param(yamlFile,1,'batchSize')
 
+## Loading datasets
+trainset = datasets.MNIST('./data',train=True,transform=None,download=True)
+train_loader = torch.utils.data.DataLoader(trainset,
+        batch_size=batchSize, shuffle=True)
 
-mnist = datasets.MNIST('./data',train=True,transform=None,download=True)
-test_loader = torch.utils.data.DataLoader(mnist,
+testset = datasets.MNIST('./data',train=False,transform=None,download=True)
+testLoader = torch.utils.data.DataLoader(testset,
         batch_size=batchSize, shuffle=True)
 
 
