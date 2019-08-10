@@ -12,10 +12,11 @@ import torchvision.datasets as datasets
 os.chdir('code')
 import nn_modules
 
-yamlFile = sys.argv[1]
+#yamlFile = sys.argv[1]
 
+yamlFile= 'Parameters.yml'
 def load_param(yamlfile,version,parm_name):
-        version = 'version' + version
+        version = 'version' + str(version)
         with open(yamlfile) as f:
                 data = yaml.load(f, Loader=yaml.FullLoader)
                 return data[version][parm_name]
@@ -28,8 +29,6 @@ mnist = datasets.MNIST('./data',train=True,transform=None,download=True)
 test_loader = torch.utils.data.DataLoader(mnist,
         batch_size=batchSize, shuffle=True)
 
-#batch size
-batch_size=10
 
 #loading iris data from sklearn
 iris = load_iris()
