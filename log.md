@@ -4,8 +4,8 @@
 #### Work log
 #### Tasks
 - [ ] Reference MNIST network
-- [ ] yaml config
-- [ ] data loading
+- [x] yaml config
+- [x] data loading
 - [ ] simulation logs
   - [ ] date
   - [ ] architecture
