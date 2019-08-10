@@ -9,10 +9,19 @@ import torch.nn.functional as F
 import torch.optim as optim
 from matplotlib import pyplot as plt
 import torchvision.datasets as datasets
-os.chdir('code')
 import nn_modules
 
 #yamlFile = sys.argv[1]
+
+##Validating version
+if yaml.__version__ != '5.1.1':
+        print('Yaml module version outdated. Please update to module 5.1.1')
+        quit()
+
+        
+def plotModelOverview(test_acc,train_acc,):
+        pass
+
 
 ## Checking if cuda available
 use_cuda = torch.cuda.is_available()
