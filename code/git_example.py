@@ -28,18 +28,18 @@ class Net(nn.Module):
     
 class Args():
     def __init__(self, yamlfile):
-        self.batch_size = load_param(yamlfile,batch_size)
-        self.test_batch_size = load_param(yamlfile,test_batch_size)
-        self.epochs = load_param(yamlfile,epochs)
-        self.lr = load_param(yamlfile,lr)
-        self.momentum = load_param(yamlfile,momentum)
-        self.no_cude = load_param(yamlfile, no_cuda)
-        self.seed = load_param(yamlfile,seed)
-        self.log_interval = load_param(yamlfile,log_interval)
-        self.save_model = load_param(yamlfile,save_model)
+        self.batch_size = self.load_param(yamlfile,"batch_size")
+        self.test_batch_size = self.load_param(yamlfile,"test_batch_size")
+        self.epochs = self.load_param(yamlfile,"epochs")
+        self.lr = self.load_param(yamlfile,"lr")
+        self.momentum = self.load_param(yamlfile,"momentum")
+        self.noCude = self.load_param(yamlfile, "noCuda")
+        self.seed = self.load_param(yamlfile,"seed")
+        self.log_interval = self.load_param(yamlfile,"log_interval")
+        self.save_model = self.load_param(yamlfile,"save_model")
 
     
-    def funcname(self,yamlfile,parm_name):
+    def load_param(self,yamlfile,parm_name):
         with open(yamlfile) as f:
                 data = yaml.load(f, Loader=yaml.FullLoader)
                 return data[parm_name]
@@ -82,7 +82,7 @@ def test(args, model, device, test_loader):
 def main():
     # Training settings
     args = Args('Parameters.yml')
-    use_cuda = not args.no_cuda and torch.cuda.is_available()
+    use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
 
