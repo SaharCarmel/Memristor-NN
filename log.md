@@ -9,8 +9,8 @@
 - [ ] simulation logs
   - [ ] date
   - [ ] architecture
-  - [ ] yaml file
-  - [ ] time for convergence
+  - [x] yaml file
+  - [x] time for convergence
   - [ ] hardware
   - [ ] plots
   - [ ] acuuracy
