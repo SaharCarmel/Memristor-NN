@@ -10,7 +10,7 @@ import nn_modules
 from nn_utils import Args , train , test
 from sacred import Experiment
 from sacred.observers import MongoObserver
-from sacred.utils import apply_backspaces_and_linefeeds
+from sacred.utils import apply_backspaces_and_lisanefeeds
 
 
 ex = Experiment()
