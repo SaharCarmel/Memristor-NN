@@ -58,7 +58,7 @@ model = nn_modules.base_net().float()
 criterion = nn.CrossEntropyLoss()
 #optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
-print(trainloader)
+
 train_loss = list()
 train_acc = list()
 test_loss = list()
@@ -71,7 +71,6 @@ for epoch in range(2):
         
         inputs, labels = data
         inputs = inputs.view(-1,28*28)
-        print(inputs.shape)
         outputs = model(inputs)
 
         loss=criterion(outputs,labels)
