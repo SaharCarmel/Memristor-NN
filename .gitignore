@@ -1,9 +1,10 @@
 <<<<<<< HEAD
 .vscode/
-code/.ipynb_checkpoints/
-code/.vs/
-code/__pycache__/
+.ipynb_checkpoints/
+.vs/
+.__pycache__/
 .vscode/settings.json
+data/
 =======
 
 >>>>>>> 87704df5000eff53c6db8f2ec0e03b7bdf309a89
