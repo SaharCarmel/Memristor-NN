@@ -3,7 +3,7 @@ import torch
 import yaml
 from torchvision import datasets, transforms
 import nn_modules
-from nn_utils import Args , train , test
+from nn_utils import Args , train , test , train_epoch
 from sacred import Experiment
 from sacred.observers import MongoObserver
 from sacred.utils import apply_backspaces_and_lisanefeeds
@@ -44,13 +44,9 @@ def main(args):
         batch_size=args.test_batch_size, shuffle=True, **kwargs)
 
     model = nn_modules.manhattan_net().to(device)
-    # criterion = torch.nn.CrossEntropyLoss(reduction='sum')
+    
+    train(args, model, device, train_loader,test_loader)
 
-    for epoch in range(1, args.epochs + 1):
-        args.lr /= (10**(epoch-1))
-        print(args.lr)
-        train(args, model, device, train_loader, model.criterion , epoch)
-        test(args, model, device, test_loader, model.criterion)
 
     if (args.save_model):
         torch.save(model.state_dict(),"mnist_cnn.pt")

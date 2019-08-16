@@ -28,7 +28,13 @@ class Args():
 
 
 
-def train(args, model, device, train_loader, criterion ,epoch):
+def train(args, model, device, train_loader,test_loader):
+    for epoch in range(1, args.epochs + 1):
+        args.lr /= (10**(epoch-1))
+        train_epoch(args, model, device, train_loader, model.criterion , epoch)
+        test(args, model, device, test_loader, model.criterion)
+
+def train_epoch(args, model, device, train_loader, criterion ,epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
