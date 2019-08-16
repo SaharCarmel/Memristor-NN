@@ -4,11 +4,24 @@ import yaml
 from torchvision import datasets, transforms
 import nn_modules
 from nn_utils import Args , train , test
+from sacred import Experiment
+from sacred.observers import MongoObserver
+from sacred.utils import apply_backspaces_and_lisanefeeds
+
+
+ex = Experiment()
+ex.observers.append(MongoObserver.create())
+ex.captured_out_filter = apply_backspaces_and_linefeeds
 
 
 # Training settings
-def main():
+@ex.config
+def my_config():
     args = Args('Parameters.yml')
+
+
+@ex.automain
+def main(args):
     use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
