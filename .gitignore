@@ -2,9 +2,10 @@
 .vscode/
 .ipynb_checkpoints/
 .vs/
-.__pycache__/
+__pycache__/
 .vscode/settings.json
 data/
+mnist_cnn.pt
 =======
 
 >>>>>>> 87704df5000eff53c6db8f2ec0e03b7bdf309a89
