@@ -6,11 +6,11 @@ import nn_modules
 from nn_utils import Args , train , test , train_epoch
 from sacred import Experiment
 from sacred.observers import MongoObserver
-from sacred.utils import apply_backspaces_and_lisanefeeds
+from sacred.utils import apply_backspaces_and_linefeeds
 
 
 ex = Experiment()
-ex.observers.append(MongoObserver.create())
+# ex.observers.append(MongoObserver.create())
 ex.captured_out_filter = apply_backspaces_and_linefeeds
 
 
