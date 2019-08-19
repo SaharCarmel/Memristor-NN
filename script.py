@@ -3,7 +3,7 @@ import torch
 import yaml
 from torchvision import datasets, transforms
 import nn_modules
-from nn_utils import Args , train , test , train_epoch
+from nn_utils import Args , train , test 
 from sacred import Experiment
 from sacred.observers import MongoObserver
 from sacred.utils import apply_backspaces_and_linefeeds
@@ -18,6 +18,7 @@ ex.captured_out_filter = apply_backspaces_and_linefeeds
 @ex.config
 def my_config():
     args = Args('Parameters.yml')
+    net = "ref_net"
 
 
 @ex.automain
@@ -45,7 +46,10 @@ def main(args):
 
     model = nn_modules.manhattan_net().to(device)
     
-    train(args, model, device, train_loader,test_loader)
+    for epoch in range(1, args.epochs + 1):
+        args.lr /= (10**(epoch-1))
+        train(args, model, device, train_loader, model.criterion , epoch)
+        test(args, model, device, test_loader, model.criterion)
 
 
     if (args.save_model):
