@@ -25,6 +25,18 @@ class Args():
                 data = yaml.load(f, Loader=yaml.FullLoader)
                 return data[parm_name]
         pass
+    
+    def __repr__(self):
+        print("Batch size: " + str(self.batch_size))
+        print("Test batch size: " + str(self.test_batch_size))
+        print("Epochs: " + str(self.epochs))
+        print("Learning rate: " + str(self.lr))
+        print("Momentum: " + str(self.momentum))
+        print("No cude: " + str(self.noCude))
+        print("Log interval: " + str(self.log_interval))
+        print("Save model? " + str(self.save_model))
+        return ''
+
 
 
 
