@@ -22,7 +22,7 @@ def my_config():
 
 
 @ex.automain
-def main(args):
+def main(args,_run):
     use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
@@ -46,10 +46,13 @@ def main(args):
 
     model = nn_modules.manhattan_net().to(device)
     
-    for epoch in range(1, args.epochs + 1):
+    for epoch in range(1, args.epochs):
         args.lr /= (10**(epoch-1))
-        train(args, model, device, train_loader, model.criterion , epoch)
-        test(args, model, device, test_loader, model.criterion)
+        loss = train(args, model, device, train_loader, model.criterion , epoch)
+        accuracy = test(args, model, device, test_loader, model.criterion)
+        _run.log_scalar("Loss",loss)
+        _run.log_scalar("Accuracy", accuracy)
+
 
 
     if (args.save_model):
