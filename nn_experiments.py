@@ -14,17 +14,34 @@ ex = Experiment()
 ex.observers.append(MongoObserver.create(db_name='MemristorNN'))
 ex.captured_out_filter = apply_backspaces_and_linefeeds
 
+def load_param(self,yamlfile,parm_name):
+    with open(yamlfile) as f:
+            data = yaml.load(f, Loader=yaml.FullLoader)
+            return data[parm_name]
+    pass
 
 # Training settings
 @ex.config
 def my_config():
-    args = Args('Parameters.yml')
+    yamlfile = 'Paramters.yml'    
+    batch_size =load_param(yamlfile,"batch_size")
+    test_batch_size =load_param(yamlfile,"test_batch_size")
+    epochs =load_param(yamlfile,"epochs")
+    lr =load_param(yamlfile,"lr")
+    momentum =load_param(yamlfile,"momentum")
+    noCuda =load_param(yamlfile, "noCuda")
+    seed =load_param(yamlfile,"seed")
+    log_interval =load_param(yamlfile,"log_interval")
+    save_model =load_param(yamlfile,"save_model")
+    dg_bins =load_param(yamlfile,"dg_bins")
+    dg_values =load_param(yamlfile,"dg_values")
+    dg_visualize =load_param(yamlfile,"dg_visualize")
     net = "ref_net"
 
 
 @ex.automain
 def main(args,_run):
-    use_cuda = not args.noCude and torch.cuda.is_available()
+    use_cuda = not args.noCuda and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
 
