@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+import torch.optim as optim
 
 
 # import math
@@ -17,7 +18,8 @@ class ref_net(torch.nn.Module):
         super(ref_net, self).__init__()
         self.fc1 = nn.Linear(784, 800)
         self.fc2 = nn.Linear(800, 10)
-        self.criterion = nn.CrossEntropyLoss(reduction='sum')
+        self.criterion = nn.CrossEntropyLoss(reduction='sum')   
+        self.optimizer = optim.SGD(self.parameters(), lr=0.005, momentum=0.9)
 
     def forward(self, x):
         x = x.view(-1,28*28)
@@ -29,6 +31,8 @@ class ref_net(torch.nn.Module):
     def update_weights(self,lr):
          self.fc1.weight.data -= lr*self.fc1.weight.grad
          self.fc2.weight.data -= lr*self.fc2.weight.grad
+        # self.optimizer.zero_grad()
+        # self.optimizer.step()
 
 class manhattan_net(torch.nn.Module):
     def __init__(self):

@@ -6,6 +6,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import yaml
 from torchvision import datasets, transforms
+import numpy as np
 
 class Args():
     def __init__(self, yamlfile):
@@ -18,6 +19,9 @@ class Args():
         self.seed = self.load_param(yamlfile,"seed")
         self.log_interval = self.load_param(yamlfile,"log_interval")
         self.save_model = self.load_param(yamlfile,"save_model")
+        self.dg_bins = self.load_param(yamlfile,"dg_bins")
+        self.dg_values = self.load_param(yamlfile,"dg_values")
+        self.dg_visualize = self.load_param(yamlfile,"dg_visualize")
 
     
     def load_param(self,yamlfile,parm_name):
@@ -35,6 +39,9 @@ class Args():
         print("No cude: " + str(self.noCude))
         print("Log interval: " + str(self.log_interval))
         print("Save model? " + str(self.save_model))
+        print("dg_bins " + str(self.dg_bins))
+        print("dg_values " + str(self.dg_values))
+        print("dg_visualize " + str(self.dg_visualize))
         return ''
 
 
@@ -72,3 +79,13 @@ def test(args, model, device, test_loader,criterion):
     print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
+
+def digitize_input(data_loader,args):
+    d = np.digitize(data_loader.dataset.data.numpy(),args.dg_bins)
+    for i in range(1,len(args.dg_bins)):
+        data_loader.dataset.data[torch.Tensor((d==i).astype(int)).type(torch.ByteTensor)] = args.dg_values[i-1]
+
+    if args.dg_visualize:
+        pass
+        
+
