@@ -3,9 +3,10 @@ import torch
 import yaml
 from torchvision import datasets, transforms
 import nn_modules
-from nn_utils import Args , train , test 
+from nn_utils import Args , train , test , digitize_input
+import yaml
 from sacred import Experiment
-from sacred.observers import MongoObserver
+# from sacred.observers import git 
 from sacred.utils import apply_backspaces_and_linefeeds
 
 
@@ -44,6 +45,9 @@ def main(args,_run):
                         ])),
         batch_size=args.test_batch_size, shuffle=True, **kwargs)
 
+    digitize_input(train_loader,args)
+    digitize_input(test_loader,args)
+    
     model = nn_modules.manhattan_net().to(device)
     
     for epoch in range(1, args.epochs):
