@@ -14,34 +14,17 @@ ex = Experiment()
 ex.observers.append(MongoObserver.create(db_name='MemristorNN'))
 ex.captured_out_filter = apply_backspaces_and_linefeeds
 
-def load_param(self,yamlfile,parm_name):
-    with open(yamlfile) as f:
-            data = yaml.load(f, Loader=yaml.FullLoader)
-            return data[parm_name]
-    pass
 
 # Training settings
 @ex.config
 def my_config():
-    yamlfile = 'Paramters.yml'    
-    batch_size =load_param(yamlfile,"batch_size")
-    test_batch_size =load_param(yamlfile,"test_batch_size")
-    epochs =load_param(yamlfile,"epochs")
-    lr =load_param(yamlfile,"lr")
-    momentum =load_param(yamlfile,"momentum")
-    noCuda =load_param(yamlfile, "noCuda")
-    seed =load_param(yamlfile,"seed")
-    log_interval =load_param(yamlfile,"log_interval")
-    save_model =load_param(yamlfile,"save_model")
-    dg_bins =load_param(yamlfile,"dg_bins")
-    dg_values =load_param(yamlfile,"dg_values")
-    dg_visualize =load_param(yamlfile,"dg_visualize")
+    args = Args('Parameters.yml')
     net = "ref_net"
 
 
 @ex.automain
 def main(args,_run):
-    use_cuda = not args.noCuda and torch.cuda.is_available()
+    use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
 
@@ -65,14 +48,15 @@ def main(args,_run):
     # digitize_input(train_loader,args)
     # digitize_input(test_loader,args)
     
-    model = nn_modules.ref_net().to(device)
-    
+    model = nn_modules.manhattan_net().to(device)
+    test_iterator = iter(test_loader)
+
     for epoch in range(1, args.epochs):
         args.lr /= (10**(epoch-1))
-        train(args, model, device, train_loader, model.criterion , epoch , _run)
-        test(args, model, device, test_loader, model.criterion , _run)
+        train(args, model, device, train_loader, test_loader ,  test_iterator, model.criterion , epoch , _run)
+        test(args, model, device, test_loader, model.criterion )
         
-        # _run.log_scalar("Accuracy", accuracy)
+        
 
 
 

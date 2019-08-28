@@ -45,7 +45,7 @@ class Args():
         return ''
 
 
-def train(args, model, device, train_loader, criterion ,epoch):
+def train(args, model, device, train_loader, test_loader ,  test_iterator, criterion ,epoch , _run):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
@@ -61,6 +61,31 @@ def train(args, model, device, train_loader, criterion ,epoch):
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
+
+            model.eval()
+            pred = output.argmax(dim=1, keepdim=True) # get the index of the max log-probability
+            correct = pred.eq(target.view_as(pred)).sum().item()
+            _run.log_scalar("Train Loss",loss.item())
+            _run.log_scalar("Train Accuracy",correct)
+            with torch.no_grad():
+                try:
+                    data, target = test_iterator.next()
+                except:
+                    test_iterator = iter(test_loader)
+                    data, target = test_iterator.next()
+
+                data, target = data.to(device), target.to(device)
+                output = model(data)
+                test_loss = criterion(output, target).item() # sum up batch loss
+                pred = output.argmax(dim=1, keepdim=True) # get the index of the max log-probability
+                correct = pred.eq(target.view_as(pred)).sum().item()
+
+                _run.log_scalar("Test Loss",test_loss)
+                _run.log_scalar("Test Accuracy",correct)    
+            
+            
+
+
 
 def test(args, model, device, test_loader,criterion):
     model.eval()
