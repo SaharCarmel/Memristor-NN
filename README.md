@@ -25,21 +25,21 @@ Artificial neural networks (ANN) became a common solution for a wide variety of 
 * Simulate the same layer now using Manhattan Rule weights update and evaluating the rule influence on the network predictions.
 * Simulating and implement the latter network now using weights being summed by positive and negative blocks as mentioned in the Manhattan Rule.
 * Creating a Y-Flash neuron class to to simulate the network with small signal theory.
-* Using bias diffrence method for time evaluation.
+* Using bias difference method for time evaluation.
 
-Reserch ideas:
+Research ideas:
 * To test what will happen if:
   * Neuron dies.
 
 
 ## Description of the algorithm
 ### Manhattan Rule:
-Weight updates accordign to [Manhattan rule training for memristive crossbar circuit pattern classifiers
+Weight updates according to [Manhattan rule training for memristive crossbar circuit pattern classifiers
 ](https://ieeexplore.ieee.org/document/7139171/citations#citations)
 
 ### Output calculation:
 
-First a bias voltage is inserted as input to the system and being recorded. Then an observation to be classifed is entered to the NN and the output being recorded. The resulting output is the observation output - bias output. The procedure of calculating bias output being done after every weight update. 
+First a bias voltage is inserted as input to the system and being recorded. Then an observation to be classified is entered to the NN and the output being recorded. The resulting output is the observation output - bias output. The procedure of calculating bias output being done after every weight update. 
 
 ## Architectural design of the selected solution
 ## Network architecture:
