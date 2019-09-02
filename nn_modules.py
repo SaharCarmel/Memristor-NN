@@ -26,14 +26,13 @@ class ref_net(torch.nn.Module):
         x = x.view(-1,28*28)
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
-        #x = F.softmax(self.fc(x),0)
         return x
     
     def update_weights(self):
-        #  self.fc1.weight.data -= self.lr*self.fc1.weight.grad
-        #  self.fc2.weight.data -= self.lr*self.fc2.weight.grad
-        self.optimizer.zero_grad()
-        self.optimizer.step()
+         self.fc1.weight.data -= self.lr*self.fc1.weight.grad
+         self.fc2.weight.data -= self.lr*self.fc2.weight.grad
+        # self.optimizer.zero_grad()
+        #  self.optimizer.step()
     
     def optimizer_step(self,epoch):
         pass

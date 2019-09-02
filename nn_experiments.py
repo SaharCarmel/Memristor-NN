@@ -8,6 +8,9 @@ import yaml
 from sacred import Experiment
 from sacred.utils import apply_backspaces_and_linefeeds
 from sacred.observers import MongoObserver
+import time
+
+
 
 
 ex = Experiment()
@@ -20,10 +23,11 @@ ex.captured_out_filter = apply_backspaces_and_linefeeds
 def my_config():
     args = Args('Parameters.yaml')
     net = "ref_net"
+    digitizeInput = False
 
 
 @ex.automain
-def main(args,net,_run):
+def main(args,digitizeInput,net,_run):
     use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
@@ -45,7 +49,7 @@ def main(args,net,_run):
                         ])),
         batch_size=args.test_batch_size, shuffle=True, **kwargs)
 
-    if args.digitizeInput:
+    if digitizeInput:
         digitize_input(train_loader,args)
         digitize_input(test_loader,args)
     
@@ -54,10 +58,15 @@ def main(args,net,_run):
     model.to(device) 
     test_iterator = iter(test_loader)
 
-    for epoch in range(1, args.epochs):
+    start = time.time()
+    
+    for epoch in range(1, args.epochs):    
         train(args, model, device, train_loader, test_loader ,  test_iterator, model.criterion , epoch , _run)
-        test(args, model, device, test_loader, model.criterion )
+        test(args, model, device, test_loader, model.criterion , _run)
         model.optimizer_step(epoch)
+
+    end = time.time()
+    _run.log_scalar('Duration',end - start)
         
         
 
