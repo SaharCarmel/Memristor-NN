@@ -10,6 +10,8 @@ import numpy as np
 
 class Args():
     def __init__(self, yamlfile):
+        self.model  = self.load_param(yamlfile,"model")
+        self.digitizeInput = self.load_param(yamlfile,"digitizeInput")
         self.batch_size = self.load_param(yamlfile,"batch_size")
         self.test_batch_size = self.load_param(yamlfile,"test_batch_size")
         self.epochs = self.load_param(yamlfile,"epochs")
@@ -31,6 +33,8 @@ class Args():
         pass
     
     def __repr__(self):
+        print("model: " + str(self.model))
+        print("digitizeInput: " + str(self.digitizeInput))
         print("Batch size: " + str(self.batch_size))
         print("Test batch size: " + str(self.test_batch_size))
         print("Epochs: " + str(self.epochs))
@@ -55,7 +59,7 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
 
         model.zero_grad()
         loss.backward()
-        model.update_weights(args.lr)
+        model.update_weights()
 
         if batch_idx % args.log_interval == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(

@@ -14,12 +14,13 @@ class ref_net(torch.nn.Module):
     # refernce model see wikipedia MNIST or
     # http://yann.lecun.com/exdb/mnist/
     # 2-layer NN, 800 HU, Cross-Entropy Loss
-    def __init__(self):
+    def __init__(self,args):
         super(ref_net, self).__init__()
         self.fc1 = nn.Linear(784, 800)
         self.fc2 = nn.Linear(800, 10)
+        self.lr = args.lr
         self.criterion = nn.CrossEntropyLoss(reduction='sum')   
-        self.optimizer = optim.SGD(self.parameters(), lr=0.005, momentum=0.9)
+        self.optimizer = optim.SGD(self.parameters(), lr=args.lr, momentum=0.9)
 
     def forward(self, x):
         x = x.view(-1,28*28)
@@ -28,14 +29,18 @@ class ref_net(torch.nn.Module):
         #x = F.softmax(self.fc(x),0)
         return x
     
-    def update_weights(self,lr):
-         self.fc1.weight.data -= lr*self.fc1.weight.grad
-         self.fc2.weight.data -= lr*self.fc2.weight.grad
-        # self.optimizer.zero_grad()
-        # self.optimizer.step()
+    def update_weights(self):
+        #  self.fc1.weight.data -= self.lr*self.fc1.weight.grad
+        #  self.fc2.weight.data -= self.lr*self.fc2.weight.grad
+        self.optimizer.zero_grad()
+        self.optimizer.step()
+    
+    def optimizer_step(self,epoch):
+        pass
+
 
 class manhattan_net(torch.nn.Module):
-    def __init__(self):
+    def __init__(self,args):
         super(manhattan_net, self).__init__()
         
         self.fc1_pos = Memristor_layer(784, 800)
@@ -44,6 +49,7 @@ class manhattan_net(torch.nn.Module):
         self.fc2_neg = Memristor_layer(800, 10)
         
         self.criterion = nn.CrossEntropyLoss(reduction='sum')
+        self.lr = args.lr
 
     def forward(self, x):
         x = x.view(-1,28*28)
@@ -52,11 +58,14 @@ class manhattan_net(torch.nn.Module):
         #x = F.softmax(self.fc(x),0)
         return x
 
-    def update_weights(self,lr):
-        self.fc1_pos.update_weight(lr)
-        self.fc1_neg.update_weight(lr)
-        self.fc2_pos.update_weight(lr)
-        self.fc2_neg.update_weight(lr)
+    def update_weights(self):
+        self.fc1_pos.update_weight(self.lr)
+        self.fc1_neg.update_weight(self.lr)
+        self.fc2_pos.update_weight(self.lr)
+        self.fc2_neg.update_weight(self.lr)
+
+    def optimizer_step(self,epoch):
+        self.lr /= (10**epoch)
 
 
 

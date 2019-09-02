@@ -18,12 +18,12 @@ ex.captured_out_filter = apply_backspaces_and_linefeeds
 # Training settings
 @ex.config
 def my_config():
-    args = Args('Parameters.yml')
+    args = Args('Parameters.yaml')
     net = "ref_net"
 
 
 @ex.automain
-def main(args,_run):
+def main(args,net,_run):
     use_cuda = not args.noCude and torch.cuda.is_available()
 
     torch.manual_seed(args.seed)
@@ -45,16 +45,19 @@ def main(args,_run):
                         ])),
         batch_size=args.test_batch_size, shuffle=True, **kwargs)
 
-    # digitize_input(train_loader,args)
-    # digitize_input(test_loader,args)
+    if args.digitizeInput:
+        digitize_input(train_loader,args)
+        digitize_input(test_loader,args)
     
-    model = nn_modules.manhattan_net().to(device)
+    models = {'ref_net' : nn_modules.ref_net , 'manhattan_net' : nn_modules.manhattan_net}
+    model = models[net](args)
+    model.to(device) 
     test_iterator = iter(test_loader)
 
     for epoch in range(1, args.epochs):
-        args.lr /= (10**(epoch-1))
         train(args, model, device, train_loader, test_loader ,  test_iterator, model.criterion , epoch , _run)
         test(args, model, device, test_loader, model.criterion )
+        model.optimizer_step(epoch)
         
         
 
