@@ -10,7 +10,7 @@
   - [x] Done with sacred/omniboard.
 #### Questions
 - [ ] Should we implement multi-layer modules? If so, should we implement activation layers?
-- [ ]  Optimizer: currently implemented constant step gradient descent. pytorch has an optimizer module (with better optimization algorithms..)  but we wouldn't be able to use the manhattan rule.
+- [ ]  Optimizer: currently implemented constant step gradient descent. pytorch has an optimizer module (with better optimization algortihms..)  but we wouldn't be able to use the manhattan rule.
 
 # Working log and summary
 ## Reference Net
