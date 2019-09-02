@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-.vscode/
-.ipynb_checkpoints/
-.vs/
-__pycache__/
-data/
-mnist_cnn.pt
-=======
-
->>>>>>> 87704df5000eff53c6db8f2ec0e03b7bdf309a89
 __pycache__/nn_modules.cpython-37.pyc
 __pycache__/nn_utils.cpython-37.pyc
 code/playground.py
+data/
+*.pt
+__pycache__/
+.vscode/
+code/
