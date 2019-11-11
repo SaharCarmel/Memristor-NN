@@ -145,16 +145,600 @@ LatexCommand tableofcontents
  גבוהות באופן ניכר מרשתות מלאכותיות.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-תיאור האלגוריתם
+תיאור האלגוריתם ורכיבים
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $Y-Flash\;Memristor$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+התקן 
+\begin_inset Formula $Y-Flash\;Memristor$
+\end_inset
+
+ מכיל בתוכו שני טרנזיסטורי 
+\begin_inset Formula $NMOS$
+\end_inset
+
+ עם שער צף 
+\begin_inset Formula $FG$
+\end_inset
+
+ משותף.
+ השליטה בשער הצף מתבצעת על ידי הקיבול בין השער הצף לבין ה-
+\begin_inset Formula $common-drain$
+\end_inset
+
+.
+ כמו שניתן לראות בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:התקן-"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/common gate.PNG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+התקן 
+\begin_inset Formula $Y-Flash\;NVM$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:התקן-"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כשמתח חיובי מופעל על ה-
+\begin_inset Formula $drain$
+\end_inset
+
+ חלק ממנו מופעל על השער הצף הודות לקיבול 
+\begin_inset Formula $Miller$
+\end_inset
+
+.
+ אם המתח חוצה את 
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ התא מתחיל להוליך ברוויה.
+ כשמתח גדול יותר מופעל על ה-
+\begin_inset Formula $drain$
+\end_inset
+
+, אלקטרונים חמים נוצרים בצומת ה-
+\begin_inset Formula $drain$
+\end_inset
+
+.
+ חלק מהאלקטרונים הללו מוזרקים לשער הצף שמוביל לעלייה בתח הסף.
+ תהליך זה הוא תהליך התכנות של התא ועצם פעולה זו משנה את אופי הממריסטור.
+ בכדי למחוק את התכנות מהתא מתח גבוה מושם על ה-
+\begin_inset Formula $source$
+\end_inset
+
+ בעוד שה-
+\begin_inset Formula $drain$
+\end_inset
+
+ והמצע מאורקים.
+ במצב זה אין זרם במכשיר.
+ חורים חמים נוצרים בצומת.
+ החורים החמים מוזרקים לשער הצף ומורידים את מתח הסף של המכשיר.
+ אופן העבודה עם המכשיר מצריך מספר איטראציות בכדי להגיע למתחי סף מסויימים
+ כמו שניתן לראות בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:מתח-הסף-כתלות"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/prog-erase iterartion.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מתח הסף כתלות באיטראציות התיכנות
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:מתח-הסף-כתלות"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כמו שניתן לראות, בכדי להגיע להתנגדות מסויימת נדרש לבצע מספר איטראציות תכנות.
+ את תכונה זו נחקור בפרוייקט זה.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $Manhttan\;Rule$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+רשתות נוירונים מורכבות מרשתות פרספטרון שכבתיות כמו שניתן לראות בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:פירוט-אלגוריתם-מנהטן"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ כמו שניתן לראות כל נוירון מיוצג על ידי סכום של סינפסות המוחברות אליו ומעביר
+ את הסכום דרך פונקציה לא לינארית שמוגדרת בעת השימוש.
+ המעבר לשימוש אנאלוגי בשרתות נוירונים מתואר בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:פירוט-אלגוריתם-מנהטן"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula $b$
+\end_inset
+
+.
+ כל צומת מציינת סינפסה ומשקלים מיוצגים על ידי נגדים וביציאה סוכמים את הזרמים
+ לתוך מגבר שרת ולאחריו פונקציה לא לינארית.
+ מכיוון שמשקלי הסינפסות יכולים להיות שליליים גודל רשת אנאלוגית מוכפל בכמות
+ הסינפסות שכן ישנו נגד אחד המייצג משקל חיובי ואחד שמייצג משקלים שליליים.
+ ולכן משקל כל סינפסה מוגדר על ידי 
+\begin_inset Formula 
+\[
+W_{ij}=G_{ij}^{+}-G_{ij}^{-}
+\]
+
+\end_inset
+
+ ובכך ניתן ליצור משקלים שליליים ביציאה.
+ באיור 
+\begin_inset Formula $c$
+\end_inset
+
+ ניתן לראות את הארכיטקטורה השלמה של רשת נוירונים אנאלוגית כאשר הממתחים 
+\begin_inset Formula $V$
+\end_inset
+
+ הם הכניסות לרשת וביציאה ממגבר השרת נקבל את יציאת הרשת.
+\begin_inset Newline newline
+\end_inset
+
+כחלק מהתהליך הלימוד של הרשת נדרש לשנות את משקל הסינפסות בכדי לשפר את ביצועי
+ הרשת.
+ בכדי ליצור פלטפורמה נוחה לשינוי משקלים נשתמש בממריסטורים על גבי טכנולוגיית
+ 
+\begin_inset Formula $Y-Flash\;NVM\:Memristor$
+\end_inset
+
+ , פירוט בסעיף
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4.2
+\numeric off
+.
+ מכיוון שנדרשים שינויים רבים בכל איטראציית לימוד של הרשת ונדרש לשנות עבור
+ כל רכיב בנפרד את התנגדות הממריסטור, במאמר זה מוצע לשנות את הנגדים לשני
+ כיוונים בלבד בשתי בעוצמה אחת על פי 
+\begin_inset Formula 
+\[
+\Delta W_{ij}^{M}=sgn\left[\Delta W_{ij}\right]
+\]
+
+\end_inset
+
+ במילים אחרות, השינוי במשקל הסינפסה מתייחס אך ורק לסימן השינוי בגודל קבוע.
+ את תוצאות האלגוריתם נבדוק בפרוייקט זה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/neural_netowrk_manhattan.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ארכיטקטורת רשת אנאלוגית
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:פירוט-אלגוריתם-מנהטן"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $Y-Flash\;Memristor\;Array$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+בסעיף זה נפרט את שיטת העבודה עם רשת שתוארה בסעיף הקודם.
+ ראשית נציין כי מכיוון שאנו לא עובדים עם נגדים אלא עם ממריסטורים, נדרש לעבוד
+ תחת מתח עבודה גבוה מ-
+\numeric on
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שכן ממריסטורים עם בבסיסם טרנזיסטורים שניתן לקבע את מתח השער ובכך לשנות את
+ הזרם המועבר דרכם כתלות במתח.
+ ולכן אם נעבוד עם מתחים הקטנים ממתח הסף לא נקבל זרם כלל.
+ הגבלה זאת מכתיבה דרך עבודה שבה מתחי הכניסה משתנים סביב מתח העבודה של הטרנזיסטור
+ים.
+ ולכן סבב לימוד ובדיקת ביצועי רשת יראה כך:
+\end_layout
+
+\begin_layout Enumerate
+העבר מתח עבודה עבור כל כניסות הרשת ומדוד מתח יציאה.
+\end_layout
+
+\begin_layout Enumerate
+המר את כניסות הרשת עבור האימון למתחים סביב מתח העבודה והכנס לרשת.
+\end_layout
+
+\begin_layout Enumerate
+החסר את מתח יציאת הרשת עבור האיבר לבדיקה מהמתח שחושב ב
+\numeric on
+1
+\numeric off
+.
+ זהו מתח היציאה של הרשת.
+\end_layout
+
+\begin_layout Enumerate
+עדכן משקלי הרשת על פי אלגוריתם מנהטן.
+\end_layout
+
+\begin_layout Enumerate
+חזור על סעיפים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1-4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+עד להתכנסות הרשת.
+\end_layout
+
+\begin_layout Standard
+לאחר תהליך האימון נדרש לבצע את סעיפים
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1-3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+בכדי לקבל את יציאת הרשת ללא השפעת מתח העבודה.
+ מתוך אלגוריתם זה ניתן להעריך כי זמן התכנסות הרשת יהיה ארוך לפחות פי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+מתהכנסות רשת מלאכותית שכן נדרשים שלבים נוספים מעבר ל
+\begin_inset Formula $Backpropagation$
+\end_inset
+
+ בעת שמאמנים את הרשת.
 \end_layout
 
 \begin_layout Section
 תכן תוכנה
-\end_layout
-
-\begin_layout Section
-ארכיטקטורה
 \end_layout
 
 \begin_layout Section
