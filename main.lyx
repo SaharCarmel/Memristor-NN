@@ -78,7 +78,35 @@
 \begin_body
 
 \begin_layout Title
-שער
+דוח סיכום פרוייקט א'
+\begin_inset Newline newline
+\end_inset
+
+
+\bar under
+בנושא:
+\bar default
+ סימולציית רשתות נוירונים על גבי 
+\begin_inset Formula $Y-Flash\;Memristor$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Author
+
+\bar under
+מבצעים:
+\bar default
+סהר כרמל 
+\begin_inset Formula $305554453$
+\end_inset
+
+, אמיר סעד 
+\bar under
+מנחה:
+\bar default
+ לואי דניאל
 \end_layout
 
 \begin_layout Standard
@@ -123,8 +151,130 @@ LatexCommand tableofcontents
 תקציר
 \end_layout
 
+\begin_layout Standard
+\align center
+בפרוייקט זה אנו מציגים ספריית 
+\begin_inset Formula $python$
+\end_inset
+
+ המייצגת על גבי ספריית 
+\begin_inset Formula $pytorch$
+\end_inset
+
+ שכבות רשתות נוירונים מבוססות עקרונות של 
+\begin_inset Formula $Memristive\:Y-Flash\;Devices$
+\end_inset
+
+.
+ בנוסף אנו משווים בפרוייקט זה בין ארכיטקטורות רשתות נוירונים עם ההגבלים
+ שהמאפיינים הפיזיים של ההתקן מגבילים אותנו.
+ את ההשוואה אנחנו מבצעים בין רשתות שהם 
+\begin_inset Formula $State-Of-The-Art(SOTA)$
+\end_inset
+
+ לבין הרשתות עם המאפיינים הפיזיים )יקראו מעתה רשתות ממריסטורים( על מסדי
+ נתונים שהם מדדי השוואה בין רשתות.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 רקע ומוטיבציה
+\end_layout
+
+\begin_layout Standard
+רשתות נוירונים מלאכותיות הפכו בשנים האחרונות לפתרון מקובל בתחומים רבים כגון:
+ בקרה וזיהוי תבניות.
+ רבות מהרשתות כיום הגיעו למצב של יישום חומרתי,בין אם בצד מחקרי ובין אם בצד
+ מסחרי, במטרה להאיץ את ביצועי הרשת.
+ עבודות אחרונות הראו כי יישום חומרתי של רשתות נוירונים, תוך כדי שימוש במכשירים
+ ננומטריים, עשויים להעלות את ביצועי הרשת בצורה דרסטית אפילו אל מעבר לרשתות
+ הביולוגיות והדיגיטליות ומתקרבים בתוך כך אל נצילות המוח האנושי.
+ הרקע ליתרונות אלו הוא למעשה שבמעגלים אנאלוגיים הכפלות מטריצות - וקטורים,
+ פעולת הבסיס לכל רשת נוירונים, ממומשת למעשה ברמה הפיזית.
+ המרכיב העיקרי שאיתו ניתן לבצע פעולה בסיסית זו הוא מכשיר בעל התנגדות משתנה,
+ שהוא למעשה זיכרון לא נדיף אנאלוגי המחקה את פעולת הנוירון הביולוגי להלן
+ ייקרא )התקן זיכרון(.
+ בשנים האחרונות היו התקדמויות רבות בייצור ופיתוח אלטרנטיבות ננומטריות למכשירי
+ זיכרון לא נדיפים כמו: מכשירי שינוי פאזה, 
+\begin_inset Formula $ferroelectric$
+\end_inset
+
+, וזכרונות מגנטיים.
+ מכשירים אלו זכו להוכחת היתכנות לדימוי רשתות ניומורפיות קטנות.
+ למרות זאת, יכולת הייצור הטכנולוגית עדיין לוקה בחסר וישנו מקום רב לשיפור,
+ ועוד לא מוכנים לייצור בקנה מידה רחב שנחוץ בכדי לייצר רשתות פרקטיות.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+מטרות ודרישות הפרוייקט
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של התקן הזיכרון הלא נדיף בתוכנת 
+\begin_inset Formula $virtousuo$
+\end_inset
+
+ בכדי לקבל הבנה רחבה יותר על אופיין המכשיר.
+\end_layout
+
+\begin_layout Enumerate
+חיתוך ואריזה של המכשיר במתקני 
+\begin_inset Formula $TowerJazz$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של רשתות 
+\begin_inset Formula $SOTA$
+\end_inset
+
+ על מאגר התמונות 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ לשם בקרת ביצועים.
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של אותה רשת אך כעת על ידי שימוש באלגוריתם 
+\begin_inset Formula $Manhattan-Rule$
+\end_inset
+
+ וחקר ביצועים ביחס לרשת ההשוואה.
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של אותה רשת אך כעת על ידי פיצול למשקלים חיוביים ושליליים
+ וחקר ביצועים ביחס לרשת ההשוואה.
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של שלושת השלבים מעל בשילוב של רשת 
+\begin_inset Formula $CNN$
+\end_inset
+
+ בכדי לבדוק את ביצועי המכשיר על בעיות מורכבות.
+\end_layout
+
+\begin_layout Enumerate
+ביצוע סימולציה של עדכון משקלי המכשיר בהתאם למתודולוגיית שינוי המשקלים של
+ המכשיר בצורה פיזית
 \end_layout
 
 \begin_layout Section
