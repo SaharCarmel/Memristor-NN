@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# License: BSD
+# Author: Sasank Chilamkurthy
+
+>>>>>>> 0fb96bad722d1b23e3ae5988179e74399845ff26
 from __future__ import print_function, division
 
 import torch
@@ -11,7 +17,12 @@ import matplotlib.pyplot as plt
 import time
 import os
 import copy
+<<<<<<< HEAD
 from nn_modules import Memristor_layer as mm_layer
+=======
+
+plt.ion()   # interactive mode
+>>>>>>> 0fb96bad722d1b23e3ae5988179e74399845ff26
 
 # Data augmentation and normalization for training
 # Just normalization for validation
@@ -131,6 +142,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     model.load_state_dict(best_model_wts)
     return model
 
+<<<<<<< HEAD
     def visualize_model(model, num_images=6):
         was_training = model.training
         model.eval()
@@ -156,6 +168,34 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
                         model.train(mode=was_training)
                         return
             model.train(mode=was_training)
+=======
+def visualize_model(model, num_images=6):
+    was_training = model.training
+    model.eval()
+    images_so_far = 0
+    fig = plt.figure()
+
+    with torch.no_grad():
+        for i, (inputs, labels) in enumerate(dataloaders['val']):
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+
+            outputs = model(inputs)
+            _, preds = torch.max(outputs, 1)
+
+            for j in range(inputs.size()[0]):
+                images_so_far += 1
+                ax = plt.subplot(num_images//2, 2, images_so_far)
+                ax.axis('off')
+                ax.set_title('predicted: {}'.format(class_names[preds[j]]))
+                imshow(inputs.cpu().data[j])
+
+                if images_so_far == num_images:
+                    model.train(mode=was_training)
+                    return
+        model.train(mode=was_training)
+
+>>>>>>> 0fb96bad722d1b23e3ae5988179e74399845ff26
 
 model_ft = models.resnet18(pretrained=True)
 num_ftrs = model_ft.fc.in_features
@@ -171,4 +211,11 @@ criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
 
 # Decay LR by a factor of 0.1 every 7 epochs
+<<<<<<< HEAD
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+=======
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+
+model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
+                       num_epochs=25)
+>>>>>>> 0fb96bad722d1b23e3ae5988179e74399845ff26
