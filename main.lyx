@@ -77,8 +77,100 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Title
+שער
+\end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+תקציר
+\end_layout
+
+\begin_layout Section
+רקע ומוטיבציה
+\end_layout
+
+\begin_layout Section
+פתרונות אלטנרטיביים
+\end_layout
+
+\begin_layout Standard
+כיום קיימים פתרונות רבים לבעיות הנדסיות שכוללים רשתות נוירונים.
+ רוב הרשתות ממומשות בצורה תיכנותית, הווה אומר שמייצרים בצורה מלאכותית רשתות
+ על גבי חומרה שאינה ייעודית.
+ חברות רבות בשוק ביניהן גוגל, נוידיה ואינטל מבינות כי ישנו גבול לביצועי
+ הרשתות המלאכותיות ופונות לפתרונות ייעודיים.
+ נוידיה וגוגל מפתחות ומשווקות בשנים האחרונות רכיבי חומרה ייעודים ללימוד
+ ומימוש רשתות על ידי יצירת רכיבים אופטימליים לבעיות אלו.
+ ולמרות זאת, רכיבי חומרה אלה עדיין מוגבלים בביצועים שכן מעבר המידע בין הרכיבים
+ השונים, אחסונם הדאטה בזכרון עדיין ממומשים בצורה מלאכותית.
+ לכן, פתרון כמו שאנחנו מציעים: רשת נוירונים אנאלוגית בלבד צפוי לספק יכולות
+ גבוהות באופן ניכר מרשתות מלאכותיות.
+\end_layout
+
+\begin_layout Section
+תיאור האלגוריתם
+\end_layout
+
+\begin_layout Section
+תכן תוכנה
+\end_layout
+
+\begin_layout Section
+ארכיטקטורה
+\end_layout
+
+\begin_layout Section
+בעיות ופתרונות
+\end_layout
+
+\begin_layout Section
+סיכום ומסקנות
+\end_layout
+
+\begin_layout Section
+נספחים
+\end_layout
+
+\begin_layout Section
+רשימת מקורות
 \end_layout
 
 \end_body
