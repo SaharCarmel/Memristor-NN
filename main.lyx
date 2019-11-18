@@ -1205,8 +1205,446 @@ name "fig:פירוט-אלגוריתם-מנהטן"
  
 \end_layout
 
+\begin_layout Subsubsection
+סט נתונים וארכיטקטורה לדוגמא
+\end_layout
+
+\begin_layout Standard
+בחרנו לפתח ולהדגים את המודל סביב סט הנתונים 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ *** .
+ הארכיטקטורה אותה מימשנו הינה הארכיטקטורה המדווחת כבעלת הביצועים הטובים
+ ביותר לסט זה
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+***
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+מבנה הקוד 
+\end_layout
+
+\begin_layout Paragraph
+מודל ביקורת - 
+\begin_inset Formula $ref\_net$
+\end_inset
+
+: מימוש רשת נוריינוים 
+\begin_inset Formula $fully-connected$
+\end_inset
+
+ לסיווג 
+\begin_inset Formula $MNIST$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+
+\numeric on
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+שכבות לינאריות:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $784\times800$
+\end_inset
+
+ , 
+\begin_inset Formula $800\times10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+קריטריון השוואה: 
+\begin_inset Formula $CrossEntropyLoss$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+שכבת אקטיבציה: 
+\begin_inset Formula $relu$
+\end_inset
+
+ )לאחר שכבה לינארית
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+לפני שכבה
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+(
+\end_layout
+
+\begin_layout Itemize
+עדכון משקלים בסיסי )ללא 
+\begin_inset Formula $optimizer$
+\end_inset
+
+( לצורך השוואה נוחה בהמשך.
+ 
+\begin_inset Formula $w=w-learning\_rate\cdot\nabla_{w}L$
+\end_inset
+
+.
+ כאשר ה-
+\begin_inset Formula $learning\_rate$
+\end_inset
+
+ מתעדכן כל 
+\begin_inset Formula $epoch$
+\end_inset
+
+ בלבד.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/ref_net.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מודל ביקורת - מימוש רשת נוריינוים 
+\begin_inset Formula $fully-connected$
+\end_inset
+
+ לסיווג 
+\begin_inset Formula $MNIST$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+מודל מבוסס שכבות מריסטור: 
+\begin_inset Formula $manhattan\_net$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Itemize
+שכבה ברשת הינה שכבת הפרש: הפרש בין שתי שכבות ממריסטור.
+ זאת ע
+\begin_inset Quotes erd
+\end_inset
+
+מ לממש משקלים שליליים.
+\end_layout
+
+\begin_layout Itemize
+
+\numeric on
+2
+\numeric off
+ שכבות הפרש:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $784\times800$
+\end_inset
+
+ , 
+\begin_inset Formula $800\times10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+קריטריון השוואה: 
+\begin_inset Formula $CrossEntropyLoss$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+שכבת אקטיבציה: 
+\begin_inset Formula $relu$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+עדכון משקלים עפ
+\begin_inset Quotes erd
+\end_inset
+
+ׁי 
+\begin_inset Formula $Manhattan\_Rule$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/manhattan_net.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מודל מבוסס שכבות מריסטור: 
+\begin_inset Formula $manhattan\_net$
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+שכבת ממריסטור 
+\begin_inset Formula $Memristor\_layer$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+עדכון משקלים עפ
+\begin_inset Quotes erd
+\end_inset
+
+ׁי 
+\begin_inset Formula $Manhattan\_Rule$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+תיחום משקלים
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/Memristor_layer.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+שכבת ממריסטור 
+\begin_inset Formula $Memristor\_layer$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-מבנה הקוד
+חקר ועקרונות במימוש המודל
 \end_layout
 
 \begin_layout Standard

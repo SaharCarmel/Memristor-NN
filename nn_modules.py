@@ -20,7 +20,6 @@ class ref_net(torch.nn.Module):
         self.fc2 = nn.Linear(800, 10)
         self.lr = args.lr 
         self.criterion = nn.CrossEntropyLoss(reduction='sum')   
-        self.optimizer = optim.SGD(self.parameters(), lr=args.lr, momentum=0.9)
 
     def forward(self, x):
         x = x.view(-1,28*28)
@@ -31,11 +30,7 @@ class ref_net(torch.nn.Module):
     def update_weights(self):
          self.fc1.weight.data -= self.lr*self.fc1.weight.grad
          self.fc2.weight.data -= self.lr*self.fc2.weight.grad
-        # self.optimizer.zero_grad()
-        #  self.optimizer.step()
-    
-    def optimizer_step(self,epoch):
-        pass
+
 
 
 class manhattan_net(torch.nn.Module):
