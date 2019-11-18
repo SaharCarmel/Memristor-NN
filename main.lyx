@@ -891,6 +891,68 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 תכן תוכנה
 \end_layout
 
+\begin_layout Subsection
+עבודה קודמת
+\end_layout
+
+\begin_layout Standard
+כהקדמה לתהליך המרכזי בפרויקט הוצג לנו מודל 
+\begin_inset Formula $verilog$
+\end_inset
+
+ של הממריסטור ומימוש בסיסי של רשת חד שכבתית ב
+\begin_inset Formula $matlab$
+\end_inset
+
+.
+ בבואנו לבצע סימולציית התנהגות של רשת נוירונים מבוססת ממריסטור המורכבות
+ ממספר שכבות נתקלנו במספר בעיות ביחס לחומרים הקיימים: 
+\end_layout
+
+\begin_layout Subsubsection
+מודל 
+\begin_inset Formula $verilog$
+\end_inset
+
+ של הממריסטור
+\end_layout
+
+\begin_layout Standard
+מודל של הממריסטור בשפת 
+\begin_inset Formula $verilog$
+\end_inset
+
+ בפורמט
+\end_layout
+
+\begin_layout Subsubsection
+מודל לרשת נוירונים חד שכבתית מבוססת ממריסטור בשפת 
+\begin_inset Formula $Matalb$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+מודל לרשת נוירונים עמוקה מבוססת ממריסטור על בסיס 
+\begin_inset Formula $pytorch$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+למה להשתמש ב-
+\begin_inset Formula $pytorch$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsubsection
+מבנה הקוד
+\end_layout
+
 \begin_layout Section
 בעיות ופתרונות
 \end_layout
