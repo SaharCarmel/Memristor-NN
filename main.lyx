@@ -926,7 +926,79 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 \begin_inset Formula $verilog$
 \end_inset
 
- בפורמט
+, בוצעו סימולציות של רכיב בודד בתכנת 
+\begin_inset Formula $spice$
+\end_inset
+
+.
+ הקושי המרכזי בבניית הדמייה לרשת עמוקה מבוססת ממריסטור ב
+\begin_inset Formula $verilog$
+\end_inset
+
+ נובע מהיכול לבצע אוטמציה של תהליכים הקפיים ב-
+\begin_inset Formula $spice$
+\end_inset
+
+ ומעבר לקנה מידה גדול יותר ב
+\begin_inset Formula $verilog$
+\end_inset
+
+.
+ כלומר מעבר מסימולציה של רכיב בודד לסימולציה של
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+100
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+רכיבים המחוברים במספר מבנים מורכבים ושונים.
 \end_layout
 
 \begin_layout Subsubsection
@@ -935,6 +1007,113 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+קוד ראשוני המבצע סימולציה של רשת ממריסטורים חד שכבתית בעלת
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+כניסות ו-
+\numeric on
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+יציאות לאימון וסיווג של מאגר הנתונים 
+\begin_inset Formula $IRIS$
+\end_inset
+
+.
+ הסימולציה מניחה מודל לינארי של הממריסטור ומתייחסת למבנה הפיסקלי שלו )תחום
+ ערכי התנגדות, עדכון עפ
+\begin_inset Quotes erd
+\end_inset
+
+ׁי 
+\begin_inset Formula $Manhattan\,Rule$
+\end_inset
+
+, וכו'(.
+ הקושי בעבודה עם תשתית זו הינו המעבר לסקאלה רחבה יותר - מימוש רשתות עמוקות
+ הדורשות מימוש 
+\begin_inset Formula $backpropogation$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
