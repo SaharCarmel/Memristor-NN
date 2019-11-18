@@ -5,6 +5,5 @@ data/
 *.pt
 __pycache__/
 .vscode/
-code/
 *main.lyx#
 main.lyx~
