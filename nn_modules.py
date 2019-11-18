@@ -30,6 +30,9 @@ class ref_net(torch.nn.Module):
     def update_weights(self):
          self.fc1.weight.data -= self.lr*self.fc1.weight.grad
          self.fc2.weight.data -= self.lr*self.fc2.weight.grad
+         
+    def optimizer_step(self,epoch):
+        pass
 
 
 

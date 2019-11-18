@@ -1839,7 +1839,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Graphics/neural_netowrk_manhattan.png
+	filename Graphics/plots/weight_bound_0_1.png
 	lyxscale 10
 	width 70col%
 
@@ -1852,13 +1852,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-ארכיטקטורת רשת אנאלוגית
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:פירוט-אלגוריתם-מנהטן-1"
-
-\end_inset
-
 
 \end_layout
 
@@ -1904,7 +1897,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Graphics/neural_netowrk_manhattan.png
+	filename Graphics/plots/weight_bound_narrow.png
 	lyxscale 10
 	width 70col%
 
@@ -1917,13 +1910,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-ארכיטקטורת רשת אנאלוגית
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:פירוט-אלגוריתם-מנהטן-1-1"
-
-\end_inset
-
 
 \end_layout
 
@@ -1954,6 +1940,41 @@ name "fig:פירוט-אלגוריתם-מנהטן-1-1"
 
 \begin_layout Standard
 ****
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/plots/weight_bound_wide.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
