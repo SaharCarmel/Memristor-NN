@@ -885,10 +885,158 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 \end_inset
 
  בעת שמאמנים את הרשת.
+ 
+\begin_inset Newline newline
+\end_inset
+
+אופיין נוסף של הרשת הפיזית שאיתה עבדנו הוא מימדיה.
+ מכיוון שהרשת שלנו מורכבת מהתקן זיכרון, מימדי ההתקן אינם גדולים ולכן מבחינה
+ פיזית הוגבלנו למערך של 
+\begin_inset Formula $8*12$
+\end_inset
+
+ רכיבים.
+ את הציפ ניתן לראות בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ההתקן-באריזה-לאחר"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-** להוסיף שנדרשנו לעבוד על רשת קטנה**
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/chip_cropped.jpeg
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ההתקן באריזה לאחר חיתוך והדבק
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ההתקן-באריזה-לאחר"
+
+\end_inset
+
+ה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ניתן לראות כי להתקן
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+20
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ רגליים המחברות לשורות הכתיבה ושורות הקריאה.
+ סכמה של המערך ניתן לראות בגרף-
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/layout.PNG
+	lyxscale 10
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+סכמת מערך הממריסטורים.
+ בטורקיז קווי קריאה.
+ בחום קווי תיכנות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1100,6 +1248,13 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 
 \begin_layout Section
 סיכום ומסקנות
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
