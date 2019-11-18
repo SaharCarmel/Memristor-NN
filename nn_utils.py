@@ -49,7 +49,7 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         output = model(data)
-        
+        print("Output dimensiob:{}".format(output.shape))
         loss=criterion(output,target)
 
         model.zero_grad()
@@ -64,8 +64,8 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
             model.eval()
             pred = output.argmax(dim=1, keepdim=True) # get the index of the max log-probability
             correct = pred.eq(target.view_as(pred)).sum().item()
-            _run.log_scalar("Train Loss",loss.item())
-            _run.log_scalar("Train Accuracy",correct)
+            # _run.log_scalar("Train Loss",loss.item())
+            # _run.log_scalar("Train Accuracy",correct)
             with torch.no_grad():
                 try:
                     data, target = test_iterator.next()
@@ -79,8 +79,8 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
                 pred = output.argmax(dim=1, keepdim=True) # get the index of the max log-probability
                 correct = pred.eq(target.view_as(pred)).sum().item()
 
-                _run.log_scalar("Test Loss",test_loss)
-                _run.log_scalar("Test Accuracy (run)",correct)    
+                # _run.log_scalar("Test Loss",test_loss)
+                # _run.log_scalar("Test Accuracy (run)",correct)    
             
             
 
