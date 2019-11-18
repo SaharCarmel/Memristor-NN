@@ -1106,6 +1106,140 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 נספחים
 \end_layout
 
+\begin_layout Subsection
+סט אימון 
+\begin_inset Formula $MNIST$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+בסיס הנתונים של 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ הוא מאגר נתונים גדול של ספרות בכתב יד המשמש לרוב להכשרת מערכות עיבוד תמונה
+ שונות.
+ מאגר המידע נמצא בשימוש נרחב גם לאימונים ובדיקות בתחום למידת מכונות.
+ זה נוצר על ידי "ערבוב מחדש" של הדגימות ממערכי הנתונים המקוריים של 
+\begin_inset Formula $NIST$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+מאגר התמונות מכיל
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $60,000$
+\end_inset
+
+ תמונות אימון ו
+\begin_inset Formula $10,000$
+\end_inset
+
+ תמונות בדיקה.
+ מאמרים רבים בדקנו את יכולות הרשתות שלהם על מאגר זה, אחד מהם הגיע לאחוז
+ שגיאה של 
+\begin_inset Formula $0.23\%$
+\end_inset
+
+.
+ המאמר המקורי שהציג את המאגר השתמש ב-
+\begin_inset Formula $SVM$
+\end_inset
+
+ והגיע לאחוז שגיאה של 
+\begin_inset Formula $0.8\%$
+\end_inset
+
+.
+ מאגר ה-
+\begin_inset Formula $MNIST$
+\end_inset
+
+ נחשב כיום לבעיה פשוטה עבור רשתות נוירונים ולכן לרוב בודקים ביצועי רשתות
+ על מאגרים כמו 
+\begin_inset Formula $ImageNet$
+\end_inset
+
+ שהיא בעיה קשה יחסית ובעיה קלה יותר שהיא 
+\begin_inset Formula $Fashion-MNIST$
+\end_inset
+
+ שמתוארת בנספח הבא.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/MnistExamples.png
+	lyxscale 10
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+דוגמאות מהמאגר הבדיקה של 
+\begin_inset Formula $MNIST$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 רשימת מקורות
 \end_layout
