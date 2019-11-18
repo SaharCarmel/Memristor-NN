@@ -24,6 +24,10 @@ def my_config():
     args = Args('Parameters.yaml')
     net = "ref_net"
     digitizeInput = False
+    lower = 0
+    upper = 1
+    args.lower = lower
+    args.upper = upper
 
 
 @ex.automain

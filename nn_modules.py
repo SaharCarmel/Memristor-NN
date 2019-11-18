@@ -18,7 +18,7 @@ class ref_net(torch.nn.Module):
         super(ref_net, self).__init__()
         self.fc1 = nn.Linear(784, 800)
         self.fc2 = nn.Linear(800, 10)
-        self.lr = args.lr
+        self.lr = args.lr 
         self.criterion = nn.CrossEntropyLoss(reduction='sum')   
         self.optimizer = optim.SGD(self.parameters(), lr=args.lr, momentum=0.9)
 
@@ -42,10 +42,10 @@ class manhattan_net(torch.nn.Module):
     def __init__(self,args):
         super(manhattan_net, self).__init__()
         
-        self.fc1_pos = Memristor_layer(784, 800)
-        self.fc1_neg = Memristor_layer(784, 800)
-        self.fc2_pos = Memristor_layer(800, 10)
-        self.fc2_neg = Memristor_layer(800, 10)
+        self.fc1_pos = Memristor_layer(784, 800,lower=args.lower,upper=args.upper)
+        self.fc1_neg = Memristor_layer(784, 800,lower=args.lower,upper=args.upper)
+        self.fc2_pos = Memristor_layer(800, 10,lower=args.lower,upper=args.upper)
+        self.fc2_neg = Memristor_layer(800, 10,lower=args.lower,upper=args.upper)
         
         self.criterion = nn.CrossEntropyLoss(reduction='sum')
         self.lr = args.lr
@@ -70,10 +70,12 @@ class manhattan_net(torch.nn.Module):
 class Memristor_layer(torch.nn.Module):
     __constants__ = ['bias', 'in_features', 'out_features']
 
-    def __init__(self, in_features, out_features, bias=True):
+    def __init__(self, in_features, out_features, lower , upper, bias=True ):
         super(Memristor_layer, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
+        self.lower = lower
+        self.upper = upper
         self.weight = Parameter(torch.Tensor(out_features, in_features))
         if bias:
             self.bias = Parameter(torch.Tensor(out_features))
@@ -82,11 +84,9 @@ class Memristor_layer(torch.nn.Module):
         self.reset_parameters()
 
     def reset_parameters(self):
-        init.kaiming_uniform_(self.weight, a=np.sqrt(5))
+        init.uniform_(self.weight, self.lower, self.upper)
         if self.bias is not None:
-            fan_in, _ = init._calculate_fan_in_and_fan_out(self.weight)
-            bound = 1 / np.sqrt(fan_in)
-            init.uniform_(self.bias, 0, 2*bound)
+            init.uniform_(self.bias, self.lower, self.upper)
 
     def forward(self, input):
         return F.linear(input, self.weight, self.bias)
@@ -96,9 +96,9 @@ class Memristor_layer(torch.nn.Module):
             self.in_features, self.out_features, self.bias is not None
         )
     
-    def update_weight(self,lr,lower=0,upper=1):
+    def update_weight(self,lr):
         self.weight.data -= lr*torch.sign(self.weight.grad)
         self.weight.data.requires_grad = False
-        self.weight.data[self.weight.data<lower] = lower
-        self.weight.data[self.weight.data>upper] = upper
+        self.weight.data[self.weight.data<self.lower] = self.lower
+        self.weight.data[self.weight.data>self.upper] = self.upper
         self.weight.data.requires_grad = True
