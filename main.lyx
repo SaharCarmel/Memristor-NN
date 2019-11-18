@@ -1729,11 +1729,7 @@ status open
 \end_layout
 
 \begin_layout Paragraph
-שכבת ממריסטור 
-\begin_inset Formula $Memristor\_layer$
-\end_inset
-
-:
+***************שכבת ממריסטור:
 \end_layout
 
 \begin_layout Itemize
@@ -1792,7 +1788,7 @@ status open
 \end_layout
 
 \begin_layout Subsection
-חקר ועקרונות במימוש המודל
+*********חקר ועקרונות במימוש המודל
 \end_layout
 
 \begin_layout Standard
@@ -1803,11 +1799,7 @@ status open
  בסיסית, ובשלבים התאמנו אותה למבנה של רשת מבוססת ממריסטור.
  בכך יכולנו לבצע השוואות למודל התכנתי הקלאסי, ולהתמודד עם שאלות הקשורות
  למידול הגבלות הפיסקליות של הממריסטור.
- 
-\end_layout
-
-\begin_layout Standard
-לכן, סעיף זה כולל השוואות בין מימושים שונים ודיון בהבדלים בינהם.
+ לכן, סעיף זה כולל השוואות בין מימושים שונים ודיון בהבדלים בינהם.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1978,19 +1970,11 @@ status open
 \end_layout
 
 \begin_layout Subsubsection
-עדכון המשקולות עפ
-\begin_inset Quotes erd
-\end_inset
-
-י 
+עדכון המשקולות עפי 
 \begin_inset Formula $Manhattan\,Rule$
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-קוונטיזציה לכניסת הרשת
 \end_layout
 
 \begin_layout Section
