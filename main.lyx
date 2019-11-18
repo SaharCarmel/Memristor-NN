@@ -1125,6 +1125,39 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 \end_layout
 
 \begin_layout Subsubsection
+הקדמה
+\end_layout
+
+\begin_layout Standard
+בפרוייקט זה הקפדנו לנצל את יכולות השפה ולעבוד בצורה מונחת עצמים למען המשך
+ הפרוייקט שכן כל פרמטר פיזיקלי וכל אופיין של המכשיר הוכנס כמודול שניתן לבחור
+ להשתמש בו או לא בעת העבודה עם הרשת.
+ בכך ניתן לבחון את ביצועי הרשת תחת תנאים מגוונים ולבודד מרכיבים אשר פוגעים
+ בביצועי הרשת בהתאם.
+ כמו כן הקוד תוכנן כך שבמידה ותדרש להתבצע המשך עבודה בעתיד, ניתן יהיה להוסיף
+ ולעמיק אמינות המודל למציאות ביתר קלות.
+\begin_inset Newline newline
+\end_inset
+
+כל רשת מיוצגת על ידי 
+\begin_inset Formula $class$
+\end_inset
+
+ עם ארכיטקטורה היזון קדמי ו-
+\begin_inset Formula $backpropagation$
+\end_inset
+
+ בהתאם.
+ ראשית מימשנו את הרשת הבסיסית שאליה נשווה את תוצאתינו.
+ בחרנו לממש את הרשת ולא להשוות אל ביצועים מהספרות מכיוון שביצועי רשת יכולים
+ להיות מושפעים בצורה משמעותית עבור תנאי התחלה ו
+\begin_inset Formula $hyper-parametes$
+\end_inset
+
+ ורצינו לקבוע אנחנו את הנתונים בכדי לקבל השוואה מדוייקת ככל הניתן.
+\end_layout
+
+\begin_layout Subsubsection
 למה להשתמש ב-
 \begin_inset Formula $pytorch$
 \end_inset
@@ -1172,37 +1205,185 @@ name "fig:פירוט-אלגוריתם-מנהטן"
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 מבנה הקוד
 \end_layout
 
 \begin_layout Standard
-בפרוייקט זה הקפדנו לנצל את יכולות השפה ולעבוד בצורה מונחת עצמים למען המשך
- הפרוייקט שכן כל פרמטר פיזיקלי וכל אופיין של המכשיר הוכנס כמודול שניתן לבחור
- להשתמש בו או לא בעת העבודה עם הרשת.
- בכך ניתן לבחון את ביצועי הרשת תחת תנאים מגוונים ולבודד מרכיבים אשר פוגעים
- בביצועי הרשת בהתאם.
- כמו כן הקוד תוכנן כך שבמידה ותדרש להתבצע המשך עבודה בעתיד, ניתן יהיה להוסיף
- ולעמיק אמינות המודל למציאות ביתר קלות.
-\begin_inset Newline newline
+את מימוש המודל ביצענו בשכבות כך שהתחלנו ממבנה רשת נויירונים 
+\begin_inset Formula $fully-connected$
 \end_inset
 
-כל רשת מיוצגת על ידי 
-\begin_inset Formula $class$
+ בסיסית, ובשלבים התאמנו אותה למבנה של רשת מבוססת ממריסטור.
+ בכך יכולנו לבצע השוואות למודל התכנתי הקלאסי, ולהתמודד עם שאלות הקשורות
+ למידול הגבלות הפיסקליות של הממריסטור.
+ 
+\end_layout
+
+\begin_layout Standard
+לכן, סעיף זה כולל השוואות בין מימושים שונים ודיון בהבדלים בינהם.
+\end_layout
+
+\begin_layout Subsubsection
+תיחום המשקלים
+\end_layout
+
+\begin_layout Paragraph
+תחום בסיסי 
+\begin_inset Formula $[0,1]$
 \end_inset
 
- עם ארכיטקטורה היזון קדמי ו-
-\begin_inset Formula $backpropagation$
+
+\end_layout
+
+\begin_layout Standard
+תחום משקלים זה דומה לאתחול ברירת המחדל של 
+\begin_inset Formula $pytorch$
 \end_inset
 
- בהתאם.
- ראשית מימשנו את הרשת הבסיסית שאליה נשווה את תוצאתינו.
- בחרנו לממש את הרשת ולא להשוות אל ביצועים מהספרות מכיוון שביצועי רשת יכולים
- להיות מושפעים בצורה משמעותית עבור תנאי התחלה ו
-\begin_inset Formula $hyper-parametes$
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/neural_netowrk_manhattan.png
+	lyxscale 10
+	width 70col%
+
 \end_inset
 
- ורצינו לקבוע אנחנו את הנתונים בכדי לקבל השוואה מדוייקת ככל הניתן.
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ארכיטקטורת רשת אנאלוגית
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:פירוט-אלגוריתם-מנהטן-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+תחום צר מוטה 
+\begin_inset Formula $[\left(1.45\cdot10^{3}\right)^{-1},\left(1.45\cdot10^{3}\right)^{-1}+1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+במחשבה ראשונית העובדה שמודל זה התכנס יכולה להיות מפתיעה.
+ ערכי משקולות גדולים מאוד עם קצב לימוד וערכי כניסה נמוכים לרוב לא מתנהגים
+ יפה יחד.
+ מודל זה התכנס בצורה טובה הודות לכך שהוא ממומש ע
+\begin_inset Quotes erd
+\end_inset
+
+ׁי שכבת הפרש - בין שתי שכבות 
+\begin_inset Formula $fully-connected$
+\end_inset
+
+ ובכך הטיית המשקולות מתחסרת.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/neural_netowrk_manhattan.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ארכיטקטורת רשת אנאלוגית
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:פירוט-אלגוריתם-מנהטן-1-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+תחום רחב מוטה 
+\begin_inset Formula $[\left(1.45\cdot10^{6}\right)^{-1},\left(1.45\cdot10^{3}\right)^{-1}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+במקרה זה המודל לא התכנס בצורה טובה.
+ תחום המשקולות הרחב במימוש ההפרשי יכול לייצר ערכי משקולות גדולים מאוד יחסית
+ לקצב הלימוד ולכניסת הרשת.
+ 
+\end_layout
+
+\begin_layout Standard
+****
+\end_layout
+
+\begin_layout Subsubsection
+עדכון המשקולות עפ
+\begin_inset Quotes erd
+\end_inset
+
+י 
+\begin_inset Formula $Manhattan\,Rule$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+קוונטיזציה לכניסת הרשת
 \end_layout
 
 \begin_layout Section

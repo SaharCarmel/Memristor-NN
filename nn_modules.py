@@ -54,7 +54,6 @@ class manhattan_net(torch.nn.Module):
         x = x.view(-1,28*28)
         x = F.relu(self.fc1_pos(x)-self.fc1_neg(x))
         x = self.fc2_pos(x) - self.fc2_neg(x)
-        #x = F.softmax(self.fc(x),0)
         return x
 
     def update_weights(self):

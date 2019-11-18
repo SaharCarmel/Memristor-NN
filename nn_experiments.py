@@ -67,13 +67,9 @@ def main(args,digitizeInput,net,_run):
 
     end = time.time()
     _run.log_scalar('Duration',end - start)
-        
-        
-
-
 
     if (args.save_model):
         torch.save(model.state_dict(),"mnist_cnn.pt")
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
