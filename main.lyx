@@ -931,7 +931,7 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 
 \begin_layout Subsubsection
 מודל לרשת נוירונים חד שכבתית מבוססת ממריסטור בשפת 
-\begin_inset Formula $Matalb$
+\begin_inset Formula $Matlab$
 \end_inset
 
 
@@ -953,8 +953,77 @@ name "fig:פירוט-אלגוריתם-מנהטן"
 ?
 \end_layout
 
+\begin_layout Standard
+בכל הנוגע לעבודה עם רשתות נוירונים שתי האפשרויות הנפוצות לשימוש הן 
+\begin_inset Formula $tesorflow$
+\end_inset
+
+ ו-
+\begin_inset Formula $pytorch$
+\end_inset
+
+.
+ בפרוייקט בחרנו להשתמש באחרון.
+ הסביבה העיקרית היא מכיוון שדרך עבודה נפוצה ונוחה לשימוש ב-
+\begin_inset Formula $tensorflow$
+\end_inset
+
+ היא דרך מודול שנקרא 
+\begin_inset Formula $keras$
+\end_inset
+
+.
+ 
+\begin_inset Formula $keras$
+\end_inset
+
+ מהווה מודול עילי שמורכב על גבי 
+\begin_inset Formula $tf$
+\end_inset
+
+ ומציע דרך קלה ונוחה לרמת רשת נוירונים.
+ הבעיה העיקרית עם מודול זה הוא חוסר האפשרות לשינוי האמלנטים הבסיסיים במודל
+ כמו אופיין הנוירונון.
+ אופן ייצוג המשקלים ועוד.
+ מנגד 
+\begin_inset Formula $pytorch$
+\end_inset
+
+ מהווה קרקע נוחה ליצירה של מודלים לא סטנדרטיים כמו שנדרש בפרוייקט זה.
+ 
+\end_layout
+
 \begin_layout Subsubsection
 מבנה הקוד
+\end_layout
+
+\begin_layout Standard
+בפרוייקט זה הקפדנו לנצל את יכולות השפה ולעבוד בצורה מונחת עצמים למען המשך
+ הפרוייקט שכן כל פרמטר פיזיקלי וכל אופיין של המכשיר הוכנס כמודול שניתן לבחור
+ להשתמש בו או לא בעת העבודה עם הרשת.
+ בכך ניתן לבחון את ביצועי הרשת תחת תנאים מגוונים ולבודד מרכיבים אשר פוגעים
+ בביצועי הרשת בהתאם.
+ כמו כן הקוד תוכנן כך שבמידה ותדרש להתבצע המשך עבודה בעתיד, ניתן יהיה להוסיף
+ ולעמיק אמינות המודל למציאות ביתר קלות.
+\begin_inset Newline newline
+\end_inset
+
+כל רשת מיוצגת על ידי 
+\begin_inset Formula $class$
+\end_inset
+
+ עם ארכיטקטורה היזון קדמי ו-
+\begin_inset Formula $backpropagation$
+\end_inset
+
+ בהתאם.
+ ראשית מימשנו את הרשת הבסיסית שאליה נשווה את תוצאתינו.
+ בחרנו לממש את הרשת ולא להשוות אל ביצועים מהספרות מכיוון שביצועי רשת יכולים
+ להיות מושפעים בצורה משמעותית עבור תנאי התחלה ו
+\begin_inset Formula $hyper-parametes$
+\end_inset
+
+ ורצינו לקבוע אנחנו את הנתונים בכדי לקבל השוואה מדוייקת ככל הניתן.
 \end_layout
 
 \begin_layout Section
