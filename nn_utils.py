@@ -49,7 +49,6 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         output = model(data)
-        print("Output dimensiob:{}".format(output.shape))
         loss=criterion(output,target)
 
         model.zero_grad()
