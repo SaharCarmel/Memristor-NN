@@ -1748,7 +1748,14 @@ status open
 תיחום משקלים
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -1770,15 +1777,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-שכבת ממריסטור 
-\begin_inset Formula $Memristor\_layer$
+שכבת ממריסטור
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\end_inset
-
+\begin_layout Plain Layout
 
 \end_layout
 
