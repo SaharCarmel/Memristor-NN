@@ -1859,7 +1859,7 @@ status open
 
 \begin_layout Paragraph
 תחום צר מוטה 
-\begin_inset Formula $[\left(1.45\cdot10^{3}\right)^{-1},\left(1.45\cdot10^{3}\right)^{-1}+1]$
+\begin_inset Formula $[\left(1.45\cdot10^{3}\right),\left(1.45\cdot10^{3}\right)+1]$
 \end_inset
 
 
@@ -1970,11 +1970,158 @@ status open
 \end_layout
 
 \begin_layout Subsubsection
-עדכון המשקולות עפי 
+עדכון המשקולות עפ
+\begin_inset Quotes erd
+\end_inset
+
+י 
 \begin_inset Formula $Manhattan\,Rule$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+במימוש הפיסקלי של רשת נויירונים מבוססת ממריסטור ערכי המוליכות 
+\begin_inset Formula $G$
+\end_inset
+
+ ברשת מעודכנים ע
+\begin_inset Quotes erd
+\end_inset
+
+ׁ מתח כתיבה קבוע.
+ מימשנו עקרון זה הנקרא 
+\begin_inset Formula $Manhattan\,Rule$
+\end_inset
+
+, כך שערכי המשקולות מעודכנים בכיוון הנגזרת בלבד ובגודל קבוע.
+ מימשנו בנוסף 
+\begin_inset Formula $learning\,rate$
+\end_inset
+
+ בדיד בשלוש רמות.
+ תוצאות מובאות באיור-**.
+\end_layout
+
+\begin_layout Subsubsection
+קוונטות כניסת הרשת
+\end_layout
+
+\begin_layout Standard
+עפ
+\begin_inset Quotes erd
+\end_inset
+
+י המימוש הפיסקלי כניסת הרשת צריכה להיות מקוונטת ל-
+\numeric on
+4
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+רמות בדידות.
+ מימשנו דרישה זו וביצענו השוואה אל מול ביצועים של רשת בעלת כניסה ללא קוונטות
+ )נוסף(.
+ תוצאות מובאות באיור -**.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/plots/manhatten_digitze.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+השוואת אחוזי הצלחה של ארבעה תהליכי אימון, השוואת רשת רפרנס )ללא ממריסטור(,
+ קוונטות כניסת הרשת: 
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+16
+\numeric off
+.
+ רשת רפרנס + קוונטות
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+17
+\numeric off
+.
+ רשת ממריסטור + קוונטות
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+18
+\numeric off
+.
+ רשת רפרנס + ללא קווינטות
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+19
+\numeric off
+.
+ רשת ממריסטור + קוונטות
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+הימנעות ממחיקה**
 \end_layout
 
 \begin_layout Section
@@ -2042,10 +2189,6 @@ status open
 \begin_inset Newpage newpage
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
