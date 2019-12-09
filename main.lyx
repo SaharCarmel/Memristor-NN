@@ -2143,6 +2143,141 @@ status open
 \end_layout
 
 \begin_layout Standard
+בפרויקט זה מימשנו סימולציה לרשת נוירונים מבוססת ממריסטור.
+ בפרק הקודם הצגנו את תהליך תכנון הרשת באופן שכבתי, כך שבכל שלב מימשנו מאפיין
+ נוסף של המודל.
+ כעת נציג השוואה של רשת סטנדרטית לרשת מבוססת ממריסטור לאחר מימוש מלא.
+ את ההשוואה נבצע על שני מסדי-נתונים שונים: 
+\begin_inset Formula $MNIST$
+\end_inset
+
+, 
+\begin_inset Formula $Fashion-MNIST$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $MNIST$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+עבור מודל סטדנרטי שאימנו על 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ קיבלנו אחוז דיוק של 
+\begin_inset Formula $97.77$
+\end_inset
+
+ על קבוצת המבחן.
+ לקחנו את מבנה המודל בעל הביצועים הטובים ביותר עפ
+\begin_inset Quotes erd
+\end_inset
+
+ׁי **.
+ עבור המודל מבוסס ממריסטור שתיכננו קיבלנו אחוז דיוק של 
+\begin_inset Formula $96.03$
+\end_inset
+
+ על קבוצת המבחן.
+ שמרנו על מבנה מודל זהה.
+ כמו כן רמת הרעש בתהליך אימון המודל מבוסס ממריסטור גבוהה יותר מזו של המודל
+ הקלאסי )** להראות( כתוצאה משימוש בתהליך עדכון עם גודל צעד קבוע )אך משתנה
+ סימן(.
+ נציין בנוסף כי קוונטות כניסת הרשת עבור סט-הנתונים 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ אינו משמעותי )כמוראה באיור - **( הודות לאופי הבינארי של התמונות בסט זה.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/plots/final_compare_MNIST_1.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Graphics/plots/final_compare_MNIST.png
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Graphics/plots/results_1.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+השוואת אחוזי הצלחה על קבוצת המבחן:
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+17
+\numeric off
+.
+ רשת ממריסטור
+\begin_inset Newline newline
+\end_inset
+
+
+\numeric on
+18
+\numeric off
+.
+ רשת רפרנס
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $Fashion-MNIST$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
