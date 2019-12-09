@@ -2213,6 +2213,10 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Graphics
 	filename Graphics/plots/final_compare_MNIST.png
 	lyxscale 10
@@ -2228,7 +2232,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/results_1.PNG
 	lyxscale 10
-	width 70col%
+	width 90col%
 
 \end_inset
 
