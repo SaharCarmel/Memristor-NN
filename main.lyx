@@ -1729,7 +1729,7 @@ status open
 \end_layout
 
 \begin_layout Paragraph
-***************שכבת ממריסטור:
+שכבת ממריסטור:
 \end_layout
 
 \begin_layout Itemize
@@ -1795,7 +1795,7 @@ status open
 \end_layout
 
 \begin_layout Subsection
-*********חקר ועקרונות במימוש המודל
+חקר ועקרונות במימוש המודל
 \end_layout
 
 \begin_layout Standard
@@ -1979,6 +1979,13 @@ status open
 \begin_layout Subsubsection
 עדכון המשקולות עפי 
 \begin_inset Formula $Manhattan\,Rule$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
