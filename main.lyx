@@ -2182,6 +2182,13 @@ name "fig:4graphs"
 הימנעות ממחיקה**
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 תוצאות
 \end_layout
@@ -2253,6 +2260,10 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Graphics
 	filename Graphics/plots/final_compare_MNIST.png
 	lyxscale 10
@@ -2268,7 +2279,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/results_1.PNG
 	lyxscale 10
-	width 70col%
+	width 90col%
 
 \end_inset
 
