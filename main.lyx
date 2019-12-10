@@ -1583,7 +1583,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/code/ref_net.PNG
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -1700,7 +1700,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/code/manhattan_net.PNG
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -1766,7 +1766,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/code/Memristor_layer.PNG
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -1782,10 +1782,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1840,7 +1836,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/weight_bound_0_1.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -1898,7 +1894,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/weight_bound_narrow.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -1952,7 +1948,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/weight_bound_wide.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -2066,7 +2062,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/manhatten_digitze.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -2208,7 +2204,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/final_compare_MNIST_1.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -2220,7 +2216,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/final_compare_MNIST.png
 	lyxscale 10
-	width 70col%
+	width 100col%
 
 \end_inset
 
@@ -2232,7 +2228,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/results_1.PNG
 	lyxscale 10
-	width 90col%
+	width 100col%
 
 \end_inset
 
@@ -2347,6 +2343,88 @@ status open
 
 \begin_layout Section
 סיכום ומסקנות
+\end_layout
+
+\begin_layout Standard
+לסיכום, הראנו כי שימוש בהתקני זיכרון מבוססי 
+\begin_inset Formula $Flash$
+\end_inset
+
+ למימוש ואימון רשתות נוירונים אפשרי, בעת הוספת ההגבלים הפיזיקליים נוכחנו
+ לגלות כי ביצועי הרשתות יורדים כשנבדקו ביחס לרשתות ללא התקני זיכרון.
+ עבור הסימולציה השלמה שבה מימשנו שכבת ממריסטור וקוונטיזציה של תמונת הכניסה,
+ קיבלנו שזמן ההתכנסות של הרשת גדל פי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ביחס לרשתות ללא המאפיינים של הממריסטור.
+ נציין כי האופטימיזציה של הרשתות במימוש הפייתוני בוודאי לא מתייחסת לעובדה
+ כי עבור אותה הרשת קיבלנו מספר כפול של פרמטרים, שכן משקלי הרשת שלנו מיוצגים
+ על ידי משקלים חיוביים ושליליים כמו שהוסבר קודם לכן.
+ בנוסף, אנחנו מעריכים כי העלייה בזמן האימון היא לכאורה בעיה תיכנותית שכן
+ במימוש הסופי של המערכת אנחנו מתכוונים להשתמש בהתקנים פיזקליים ולא במימוש
+ תיכנותי של ההתקנים.
+ כמו כן, אם נרצה לשפר את ביצועי הרשת נוכל לבצע אופטימיזציה נוספת עבור המימוש
+ התוכנתי של הרשת בכך שננצל את העובדה שניתן לייצג את המשקלים החיוביים והמשקלים
+ השליליים של הרשת כשתי רשתות נפרדות ועל ידי אופטימיזציה מקבילית של מימוש
+ הרשת לשפר את ביצועיה.
+ 
+\begin_inset Newline newline
+\end_inset
+
+דבר נוסף שיש לשים עליו דגש הוא היכולת הנמוכה של הרשת להתקבע על ערך דיוק
+ לאורך זמן.
+ כמו 
 \end_layout
 
 \begin_layout Standard
