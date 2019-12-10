@@ -2175,7 +2175,19 @@ name "fig:4graphs"
 \end_layout
 
 \begin_layout Subsubsection
-הימנעות ממחיקה**
+הימנעות ממחיקה
+\end_layout
+
+\begin_layout Standard
+במימוש של רשת ממריסטור, עדכון המשקלים מתבצע על ידי תיכנות ומחיקה של התקני
+ הזיכרון.
+ התקני זיכרון משתמשים במחיקה לאורך שורות באופן בסיסי ולכן רצינו לבדוק האם
+ ניתן לאמן את הרשת ללא פעולת המחיקה, ז
+\begin_inset Quotes erd
+\end_inset
+
+א ללא עדכון משקלים שליליים.
+ את תוצאות האימון של הרשת ניתן לראות בגרף-
 \end_layout
 
 \begin_layout Standard
@@ -2297,6 +2309,13 @@ status open
 \numeric off
 .
  רשת רפרנס
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:השוואת-אחוזי-הצלחה"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2488,7 +2507,38 @@ noprefix "false"
 
 דבר נוסף שיש לשים עליו דגש הוא היכולת הנמוכה של הרשת להתקבע על ערך דיוק
  לאורך זמן.
- כמו 
+ כמו שניתן לראות בגרף-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:השוואת-אחוזי-הצלחה"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ מדד הדיוק של הרשת מתקשה להתכנס מכיוון שבניגוד לרשת הקלאסית שבה גודל הצעד
+ קטן עם כל 
+\begin_inset Formula $epoch$
+\end_inset
+
+, ברשת הממריסטור גודל הצעד הקטן אבל עקב השימוש ב
+\begin_inset Formula $Manhattan-rule$
+\end_inset
+
+ גודל הגרדיאנט קבוע.
+ אנחנו מניחים כי אם נצליח להקטין את גודל הפולס באופן פיזיקלי נוכל לקבל התכנסות
+ טובה יותר של הרשת.
+ לחילופין, ניתן להתחיל את אימון הרשת עם רצף של כמה פולסים ולהקטין את מספר
+ הפולסים באותו אופן שמקטינים את ה-
+\begin_inset Formula $lr$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
