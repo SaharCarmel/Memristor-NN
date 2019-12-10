@@ -1934,10 +1934,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-****
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2048,7 +2044,71 @@ status open
 רמות בדידות.
  מימשנו דרישה זו וביצענו השוואה אל מול ביצועים של רשת בעלת כניסה ללא קוונטות
  )נוסף(.
- תוצאות מובאות באיור -**.
+ תוצאות מובאות באיור -
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4graphs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ הסטוגרמת ערכי הכניסה לפני ואחרי הקוונטות מובאות באיור - 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:quantization"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/digitization_histograms.png
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+הסטוגרמת ערכי הכניסה.
+ משמאל: לפני ביצוע קוונטיזציה, מימן אחרי ביצוע קוונטיזציה לשלוש רמות.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:quantization"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2062,7 +2122,7 @@ status open
 \begin_inset Graphics
 	filename Graphics/plots/manhatten_digitze.png
 	lyxscale 10
-	width 100col%
+	width 70col%
 
 \end_inset
 
@@ -2075,42 +2135,33 @@ status open
 \begin_layout Plain Layout
 השוואת אחוזי הצלחה של ארבעה תהליכי אימון, השוואת רשת רפרנס )ללא ממריסטור(,
  קוונטות כניסת הרשת: 
-\begin_inset Newline newline
-\end_inset
-
-
 \numeric on
 16
 \numeric off
 .
- רשת רפרנס + קוונטות
-\begin_inset Newline newline
-\end_inset
-
-
+ רשת רפרנס + קוונטות , 
 \numeric on
 17
 \numeric off
 .
- רשת ממריסטור + קוונטות
-\begin_inset Newline newline
-\end_inset
-
-
+ רשת ממריסטור + קוונטות , 
 \numeric on
 18
 \numeric off
 .
- רשת רפרנס + ללא קווינטות
-\begin_inset Newline newline
-\end_inset
-
-
+ רשת רפרנס + ללא קווינטות , 
 \numeric on
 19
 \numeric off
 .
  רשת ממריסטור + קוונטות
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4graphs"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2186,11 +2237,7 @@ status open
  כמו כן רמת הרעש בתהליך אימון המודל מבוסס ממריסטור גבוהה יותר מזו של המודל
  הקלאסי )** להראות( כתוצאה משימוש בתהליך עדכון עם גודל צעד קבוע )אך משתנה
  סימן(.
- נציין בנוסף כי קוונטות כניסת הרשת עבור סט-הנתונים 
-\begin_inset Formula $MNIST$
-\end_inset
-
- אינו משמעותי )כמוראה באיור - **( הודות לאופי הבינארי של התמונות בסט זה.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2239,20 +2286,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-השוואת אחוזי הצלחה על קבוצת המבחן:
-\begin_inset Newline newline
-\end_inset
-
-
+השוואת אחוזי הצלחה על קבוצת המבחן: 
 \numeric on
 17
 \numeric off
 .
- רשת ממריסטור
-\begin_inset Newline newline
-\end_inset
-
-
+ רשת ממריסטור ,
 \numeric on
 18
 \numeric off
@@ -2270,11 +2309,36 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+נציין בנוסף כי קוונטות כניסת הרשת עבור סט-הנתונים 
+\begin_inset Formula $MNIST$
+\end_inset
+
+ אינו משמעותי )כמוראה באיור - 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:quantization"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+( הודות לאופי הבינארי של התמונות בסט זה.
+\end_layout
+
 \begin_layout Subsection
 \begin_inset Formula $Fashion-MNIST$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Fashion-MNIST$
+\end_inset
+
+ הינו סט-נתונים 
 \end_layout
 
 \begin_layout Standard
