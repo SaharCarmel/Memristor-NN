@@ -2,7 +2,7 @@ import argparse
 import torch
 import yaml
 from torchvision import datasets, transforms
-import nn_modules
+from nn_modules import ref_net, manhattan_net, Memristor_layer, manhattan_net_with_model
 from nn_utils import Args , train , test , digitize_input
 import yaml
 from sacred import Experiment
@@ -14,7 +14,7 @@ import time
 
 
 ex = Experiment()
-ex.observers.append(MongoObserver.create(db_name='MemristorNN'))
+ex.observers.append(MongoObserver.create())
 ex.captured_out_filter = apply_backspaces_and_linefeeds
 
 
@@ -22,7 +22,7 @@ ex.captured_out_filter = apply_backspaces_and_linefeeds
 @ex.config
 def my_config():
     args = Args('Parameters.yaml')
-    net = "ref_net"
+    net = "manhattan_net_with_model"
     digitizeInput = False
 
 
@@ -53,7 +53,8 @@ def main(args,digitizeInput,net,_run):
         digitize_input(train_loader,args)
         digitize_input(test_loader,args)
     
-    models = {'ref_net' : nn_modules.ref_net , 'manhattan_net' : nn_modules.manhattan_net}
+    models = {'ref_net': ref_net.RefNet, 'manhattan_net': manhattan_net.ManhattanNet,
+            'manhattan_net_with_model': manhattan_net_with_model.ManhattanNetWithModel}
     model = models[net](args)
     model.to(device) 
     test_iterator = iter(test_loader)
@@ -66,7 +67,6 @@ def main(args,digitizeInput,net,_run):
         model.optimizer_step(epoch)
 
     end = time.time()
-    _run.log_scalar('Duration',end - start)
         
         
 

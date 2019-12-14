@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import numpy as np
 import torch.optim as optim
 from torchvision import models
+from nn_modules.Memristor_layer import MemristorLayer
 
 
 # import math
@@ -12,12 +13,12 @@ import torch.nn.init as init
 
 class ManhattanNet(torch.nn.Module):
     def __init__(self, args):
-        super(manhattan_net, self).__init__()
+        super(ManhattanNet, self).__init__()
 
-        self.fc1_pos = Memristor_layer(784, 800)
-        self.fc1_neg = Memristor_layer(784, 800)
-        self.fc2_pos = Memristor_layer(800, 2)
-        self.fc2_neg = Memristor_layer(800, 2)
+        self.fc1_pos = MemristorLayer(784, 800)
+        self.fc1_neg = MemristorLayer(784, 800)
+        self.fc2_pos = MemristorLayer(800, 2)
+        self.fc2_neg = MemristorLayer(800, 2)
 
         self.criterion = nn.CrossEntropyLoss(reduction='sum')
         self.lr = args.lr
