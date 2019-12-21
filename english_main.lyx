@@ -155,8 +155,73 @@ LatexCommand tableofcontents
 Background and motivation
 \end_layout
 
+\begin_layout Standard
+Artificial neural networks (ANN) became a common solution for a wide variety
+ of problems in many fields, such as control and pattern recognition.
+ Many ANN solutions reached a hardware implementation phase, either commercial
+ or with prototypes, aiming to accelerate its performance.
+ Recent work has shown that hardware implementation, utilizing nanoscale
+ devices, may increase the network performance dramatically, leaving far
+ behind their digital and biological counterparts, and approaching the energy
+ efficiency of the human brain.
+ The background of these advantages is the fact that in analog circuits,
+ the vector-matrix multiplication, the key operation of any neuromorphic
+ network, is implemented on the physical level.
+ The key component of such mixed-signal neuromorphic networks is a device
+ with tunable conductance, essentially an analog nonvolatile memory cell,
+ mimicking the biological synapse.
+ There have been significant recent advances in the development of alternative
+ nanoscale nonvolatile memory devices, such as phase change, ferroelectric,
+ and magnetic memories.
+ In particular, these emerging devices have already been used to demonstrate
+ small neuromorphic networks.
+ However, their fabrication technology is still in much need for improvement
+ and not ready yet for the large-scale integration, which is necessary for
+ practically valuable neuromorphic networks.
+ This project investigates a network prototype based on mature technology
+ of nonvolatile floating-gate memory cells.
+\end_layout
+
 \begin_layout Section
 Goals and project requirements
+\end_layout
+
+\begin_layout Enumerate
+Simulating the non-volatile memristive device with virtousuo.
+\end_layout
+
+\begin_layout Enumerate
+Dicing and Packaging at Towerjazz facilities.
+\end_layout
+
+\begin_layout Enumerate
+Simulating state of the art neural networks on MNIST data base for comparison.
+\end_layout
+
+\begin_layout Enumerate
+Using the last network now using Manhattan rule weights update algorithm
+ and comparing to the state of the art architecture.
+\end_layout
+
+\begin_layout Enumerate
+Using the last network now dividing the weights of the network to positive
+ and negative weights.
+ Comparing the results to the SOTA performance.
+\end_layout
+
+\begin_layout Enumerate
+Using the last network now limiting weights to physical constraints .
+ Comparing the results to the SOTA performance.
+\end_layout
+
+\begin_layout Enumerate
+Using the last network now using only program operations without clear.
+ Comparing the results to the SOTA performance.
+\end_layout
+
+\begin_layout Enumerate
+Simulating a CNN network using the FF layers with the physical features
+ developed above.
 \end_layout
 
 \begin_layout Section
