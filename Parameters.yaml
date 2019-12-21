@@ -9,6 +9,7 @@ log_interval: 10
 save_model: True
 dg_bins: [0,50,200,256]
 dg_values: [0,127,255]
+bias_voltage: 2
 
 
   

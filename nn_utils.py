@@ -22,6 +22,7 @@ class Args():
         self.save_model = self.load_param(yamlfile,"save_model")
         self.dg_bins = self.load_param(yamlfile,"dg_bins")
         self.dg_values = self.load_param(yamlfile,"dg_values")
+        self.bias_voltage = self.load_param(yamlfile, "bias_voltage")
 
     
     def load_param(self,yamlfile,parm_name):
@@ -41,6 +42,7 @@ class Args():
         print("Save model? " + str(self.save_model))
         print("dg_bins " + str(self.dg_bins))
         print("dg_values " + str(self.dg_values))
+        print("bias_voltage " + str(self.bias_voltage))
         return ''
 
 
