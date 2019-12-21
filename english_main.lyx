@@ -262,8 +262,95 @@ Results
 Problems and solutions
 \end_layout
 
+\begin_layout Standard
+During our work, we encountered complex difficulties, due in part to the
+ fact that the project involves physical characteristics along with programming
+ characteristics.
+ The main challenge we are faced with is simulating as close as possible
+ to the reality of the Memristor device described above and casting its
+ physical properties into the neural networks.
+ On this issue, we were required to spend most of our time because the open
+ source community hardly touche these areas and the work done on the simulation
+ of physical devices is inaccessible to use.
+ Also, because we used neural network libraries (pytorch) that are accustomed
+ to a standard network structure, the integration of changes into the basic
+ components of the network was an obstacle to the task accomplishment.
+ Among other things, we needed to modify and adapt basic elements such as
+ neurons, synapses, activation functions, and behavior in order to accomplish
+ true simulation.
+\begin_inset Newline newline
+\end_inset
+
+Another difficulty rised when we started training the network on databases.
+ Because the network we were asked to train was composed of physical components
+ in the form of meristors, we were required to work on device sets with
+ a limited amount of components.
+ As we approached the problem with a low-value array, we found that the
+ basket of problems that could be solved given that array was diluted and
+ no significant conclusions could be drawn about the use of memory-based
+ networks.
+ Also, unlike neural networks where each neuron can be accessed individually,
+ we had to deal with a memory system programming and deletion, which means
+ that we can erase on rows only and not individually.
+ Also, a problem that arises from working with memory components is the
+ volatility of the information stored therein, naturally because the information
+ stored in the memory components is based on the principle of an electron
+ floating gate and is not hermetically stored and thus the memory component
+ voltage.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Regarding the physical nature of the device, as opposed to neuronal networks
+ in which the synapse weight value is changed by changing the numeric value
+ of the memory stored weight, the physical component programming is required
+ to do voltage pulses on the device.
+ This creates a situation in which the backpropagation and weighting stage
+ requires additional algorithms to improve network performance.
+ 
+\end_layout
+
 \begin_layout Section
 Summary and Conclusions
+\end_layout
+
+\begin_layout Standard
+To summrize, we have shown that using flash-based memory devices to fabricate
+ and train neural networks is feasible, when adding the physical restrictions
+ we found that network performance decreases when tested against networks
+ without memory devices.
+ For the complete simulation in which we developed a layer of meristor and
+ quantization of the input image, we obtained that the convergence time
+ of the grid increased 5-fold relative to networks without the properties
+ of the meristor.
+ We should note that the optimization of the networks in the Python certainly
+ does not take into account the fact that for the same network we received
+ a double number of parameters, Since our net weights are represented by
+ positive and negative weights as explained earlier.
+ In addition, we estimate that the increase in training time is apparently
+ a programming problem since in the final realization of the system we intend
+ to use physical devices and not the programmatic realization of the devices.
+ Also, if we want to improve network performance, we can further optimize
+ the network's software implementation by taking advantage of the fact that
+ the positive and negative weights of the network can be represented as
+ two separate networks and by parallel optimization of the network implementatio
+n to improve its performance.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Another thing to emphasize is the low network's ability to determine accuracy
+ over time.
+ As you can see in the graph- [fig: compare-success-percentages] The accuracy
+ of the net is having difficult to converge because, unlike the classical
+ net where the step size is getting smaller with each epoch, the memristor
+ net is getting small step size every epoch, but due to the use of the Manhattan
+ rule the gradient step size is constant.
+ We assume that if we are able to physically reduce the size of the pulse
+ we can have a better convergence of the network.
+ Alternatively, one can start the network training with a sequence of several
+ pulses and decrease the number of pulses in the same way that the lr decreases.
+ 
 \end_layout
 
 \begin_layout Section
