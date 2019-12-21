@@ -102,7 +102,93 @@ In this project we present a python module based on pytorch ML module that
  presents a neural network architecture based on Y-Flash memristive device
  physical features.
  The comparison we present is based on the differences between state of
- the art neural networks over traditional benchmarks databases 
+ the art neural networks over traditional benchmarks databases vs memristor
+ based neural networks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Background and motivation
+\end_layout
+
+\begin_layout Section
+Goals and project requirements
+\end_layout
+
+\begin_layout Section
+Alternative solutions
+\end_layout
+
+\begin_layout Section
+Algorithm description 
+\end_layout
+
+\begin_layout Section
+Software implementation
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Section
+Problems and solutions
+\end_layout
+
+\begin_layout Section
+Summary and Conclusions
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Section
+Bibliography 
 \end_layout
 
 \end_body
