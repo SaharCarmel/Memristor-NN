@@ -228,6 +228,24 @@ Simulating a CNN network using the FF layers with the physical features
 Alternative solutions
 \end_layout
 
+\begin_layout Standard
+Today there are many solutions to engineering problems involving neural
+ networks.
+ Most networks are programmatically implemented, which means that artificial
+ networks are made on non-dedicated hardware.
+ Many companies in the market, including Google, Nvidia and Intel, realize
+ that there is a limit to the performance of artificial networks and are
+ looking for dedicated solutions.
+ In recent years, Nvidia and Google have been developing and marketing dedicated
+ hardware components for learning and implementing networks by creating
+ optimal components for these problems.
+ Nevertheless, these hardware components are still limited in performance
+ since the transfer of information between the various components, and their
+ memory storage is still artificially implemented.
+ Therefore, a solution as we propose: a purely analog neuronal network is
+ expected to provide significantly higher capabilities than artificial networks.
+\end_layout
+
 \begin_layout Section
 Algorithm description 
 \end_layout
