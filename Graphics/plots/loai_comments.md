@@ -1,0 +1,3 @@
+- [ ] learning rate from physical model
+- [ ] Large signal - small signal
+- [ ] 
