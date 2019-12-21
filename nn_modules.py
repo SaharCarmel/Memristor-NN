@@ -96,6 +96,7 @@ class Memristor_layer(torch.nn.Module):
     
     def update_weight(self,lr):
         self.weight.data -= lr*torch.sign(self.weight.grad)
+        # self.weight.data -= lr*torch.relu(self.weight.grad)
         self.weight.data.requires_grad = False
         self.weight.data[self.weight.data<self.lower] = self.lower
         self.weight.data[self.weight.data>self.upper] = self.upper
