@@ -528,6 +528,170 @@ As part of the network learning process, the weight of synapses are modified
 Y-Flash Memristor array
 \end_layout
 
+\begin_layout Standard
+In this section, we will describe the network working method described in
+ the previous section.
+ First, we note that because we do not work with resistors but with meristors,
+ it is necessary to work under a working voltage greater than 0 since meristors
+ are transistors at their base which one can modify his gate voltage and
+ thus change the current transferred through them.
+ And so if we work with voltages that are smaller than the threshold voltage
+ we will not receive any current.
+ This limitation dictates a way in which the input voltages vary around
+ the working voltage of the transistors.
+ Therefore, a training round and network inference test will look like this:
+\end_layout
+
+\begin_layout Enumerate
+Apply working voltage to the network and store network bias output.
+\end_layout
+
+\begin_layout Enumerate
+Convert the network inputs to voltages around the working voltage and apply
+ to net.
+\end_layout
+
+\begin_layout Enumerate
+Subtract the bias output from the network output, this the output of the
+ network.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Modify the network's weights by Manhattan rule.
+\end_layout
+
+\begin_layout Enumerate
+Repeat 1-4 up until convergence.
+\end_layout
+
+\begin_layout Standard
+After the learning process has completed in order to use the network in
+ it's inference mode, steps 1-3 are needed in order to get the network's
+ outputs.
+\begin_inset Newline newline
+\end_inset
+
+Another characteristics of out device is her physical dimension.
+ Since the network is fabricated using memristor devices on silicon, the
+ network dimension is dictated from the technology constraints on the number
+ of devices that can be fabricated on a single chip.
+ A sample of the chip we worked with can be seen in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-device-after"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/chip_cropped.jpeg
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The device 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-device-after"
+
+\end_inset
+
+e after packing and dicing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that the device has 20 legs that are connected to the read and
+ write lines of the device.
+ This device has 8*12 grid of memristors which translates into a 4*6 grid
+ neural network.
+ A scheme of the device can be seen in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Memristor-array-scheme."
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/layout.PNG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Memristor arr
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Memristor-array-scheme."
+
+\end_inset
+
+ay scheme.
+ In blue are the read lines, brown are program lines.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Software implementation
 \end_layout
