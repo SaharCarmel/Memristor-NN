@@ -250,6 +250,284 @@ Today there are many solutions to engineering problems involving neural
 Algorithm description
 \end_layout
 
+\begin_layout Subsection
+Y-Flash Memristor
+\end_layout
+
+\begin_layout Standard
+The Y-Flash memristor device is comprised of two NMOS transistors with a
+ common Floating gate (FG).
+ The control of the FG is via the capacitance between the FG to the common
+ drain.
+ As we can see in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Y-Flash-NVM-device"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/common gate.PNG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Y-F
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Y-Flash-NVM-device"
+
+\end_inset
+
+lash NVM device
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When a positive voltage is applied on the drain, part of it is applied on
+ the FG due to Miller capacitance.
+ If the voltage goes above 
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ the cell starts to saturate.
+ When higher voltage is applied on the drain, hot electrons are created
+ at the drain junction, part of those are injected into the FG which results
+ in raise of the threshold voltage.
+ The mentioned process is the programming process and this kind of action
+ changes the characteristics of the memristor.
+ In order to erase the programming, high voltage is applied on the source
+ while the drain and the bulk are connected to ground, with this setup there
+ are no current inside the device.
+ Hot holes are created in the junction, the hot holes are injected into
+ the FG which lowers the threshold voltage of the device.
+ The program and erase sequence demands a numerous iterations in order to
+ achieve desired threshold voltages as we can see in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:-vs-program"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/prog-erase iterartion.PNG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ vs program iterations
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:-vs-program"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see in order to achieve certain resistance numerous iterations
+ needed to be applied.
+ 
+\end_layout
+
+\begin_layout Subsection
+Manhattan Rule
+\end_layout
+
+\begin_layout Standard
+Neuron networks consist of layered perceptron networks as seen in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Analog-neural-network"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ a.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/neural_netowrk_manhattan.png
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analog 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Analog-neural-network"
+
+\end_inset
+
+neural network architecture
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As can be seen, each neuron is represented by the sum of synapses attached
+ to it and transmits the sum through a nonlinear function defined when used.
+ The transition to analog use in neuronal servers is depicted in the Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Analog-neural-network"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ b.
+ Each node indicates a synapse and weights are represented by resistors
+ and outputs sum the currents into an op-amp followed by a non-linear function.
+ Because the weights of synapses can be negative, the analog network size
+ is multiplied by the amount of synapses since there is one that represents
+ a positive weight and one that represents a negative weight.
+ And so the weight of each synapse is defined by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W_{ij}=G_{ij}^{+}-G_{ij}^{-}
+\]
+
+\end_inset
+
+ And like so we can create artificially negative weights.
+ Fig- 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Analog-neural-network"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+c shows the complete analog neuron network architecture where the voltages
+ V are the network inputs and the op-amp outputs the network classification.
+\begin_inset Newline newline
+\end_inset
+
+As part of the network learning process, the weight of synapses are modified
+ in order to improve the network's performance.
+ In order to create a convenient weight change platform, we will use Meristors
+ on Y-Flash NVM Memristor technology.
+ Because many changes are required in each learning iteration of the network
+ and each component is individually required to change the resistor resistance,
+ this rule proposes to change the resistors in only two directions in one
+ intensity at a time.
+ 
+\begin_inset Formula 
+\[
+\Delta W_{ij}^{M}=sgn\left[\Delta W_{ij}\right]
+\]
+
+\end_inset
+
+ In other words, the change in the weight of the synapse is related only
+ to the gradient sign.
+ We will investigate the impact of this rule on the process of training.
+\end_layout
+
+\begin_layout Subsection
+Y-Flash Memristor array
+\end_layout
+
 \begin_layout Section
 Software implementation
 \end_layout
