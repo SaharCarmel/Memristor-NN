@@ -1352,6 +1352,10 @@ Activation layer: Relu
 Weights update by manhattan rule.
 \end_layout
 
+\begin_layout Itemize
+Weights are restricted by physical constraints
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float algorithm
 placement H
@@ -1375,7 +1379,43 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ref net algorithm
+Memristor layer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/Memristor_layer.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Manhttan net
 \end_layout
 
 \end_inset
@@ -1398,6 +1438,42 @@ A resnet-16 pre-trained as the convolution layer
 
 \begin_layout Itemize
 A fully connected manhttan after it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/CNN.JPG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+CNN algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
