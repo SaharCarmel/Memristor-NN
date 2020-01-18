@@ -10,9 +10,6 @@ from sacred.utils import apply_backspaces_and_linefeeds
 from sacred.observers import MongoObserver
 import time
 
-
-
-
 ex = Experiment()
 ex.observers.append(MongoObserver.create(db_name='MemristorNN'))
 ex.captured_out_filter = apply_backspaces_and_linefeeds
@@ -22,7 +19,7 @@ ex.captured_out_filter = apply_backspaces_and_linefeeds
 @ex.config
 def my_config():
     args = Args('Parameters.yaml')
-    net = "ref_net"
+    net = "manhattan_net"
     digitizeInput = False
     lower = 0
     upper = 1

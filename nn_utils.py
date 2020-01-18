@@ -66,6 +66,18 @@ def train(args, model, device, train_loader, test_loader ,  test_iterator, crite
             correct = pred.eq(target.view_as(pred)).sum().item()
             _run.log_scalar("Train Loss",loss.item())
             _run.log_scalar("Train Accuracy",correct)
+            
+            _run.log_scalar("Vth1",float(model.fc1_neg.Vth[5,5]))
+            _run.log_scalar("dVth1",float(model.fc1_neg.dvthdt[5,5]))
+            _run.log_scalar("Vth2",float(model.fc1_neg.Vth[200,50]))
+            _run.log_scalar("Vth3",float(model.fc1_neg.Vth[6,398]))
+            _run.log_scalar("Vth4",float(model.fc1_neg.Vth[617,3]))
+
+            _run.log_scalar("dVth1",float(model.fc1_neg.dvthdt[5,5]))
+            _run.log_scalar("dVth2",float(model.fc1_neg.dvthdt[200,50]))
+            _run.log_scalar("dVth3",float(model.fc1_neg.dvthdt[6,398]))
+            _run.log_scalar("dVth4",float(model.fc1_neg.dvthdt[617,3]))
+
             with torch.no_grad():
                 try:
                     data, target = test_iterator.next()
