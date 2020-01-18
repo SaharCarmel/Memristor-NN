@@ -9,6 +9,15 @@ import torch.optim as optim
 from torch.nn.parameter import Parameter
 import torch.nn.init as init
 
+OM = -1
+
+IREAD = 1e-9
+MVT = 0.144765
+CR = 1
+BB45 = 5.1e-5
+CRPROG = 0.48
+VPROG = 4.5
+VDS = 2
 
 class ref_net(torch.nn.Module):
     # refernce model see wikipedia MNIST or
@@ -75,11 +84,17 @@ class Memristor_layer(torch.nn.Module):
         self.lower = lower
         self.upper = upper
         self.weight = Parameter(torch.Tensor(out_features, in_features))
+        self.Vth = torch.ones_like(self.weight.data) + 0.01*torch.rand_like(self.weight.data)
+        self.Ids = lambda v: IREAD * np.exp(CR*VDS/MVT) * torch.exp(-v/MVT)
+        self.dvthdt = torch.ones_like(self.weight.data)
+
         if bias:
             self.bias = Parameter(torch.Tensor(out_features))
         else:
             self.register_parameter('bias', None)
+
         self.reset_parameters()
+        self.weight.data = (CR/MVT * self.Ids(self.Vth))**(OM)
 
     def reset_parameters(self):
         init.uniform_(self.weight, self.lower, self.upper)
@@ -95,9 +110,10 @@ class Memristor_layer(torch.nn.Module):
         )
     
     def update_weight(self,lr):
-        self.weight.data -= lr*torch.sign(self.weight.grad)
-        # self.weight.data -= lr*torch.relu(self.weight.grad)
+        
         self.weight.data.requires_grad = False
-        self.weight.data[self.weight.data<self.lower] = self.lower
-        self.weight.data[self.weight.data>self.upper] = self.upper
+        
+        self.dvthdt = BB45*(CRPROG*VPROG - self.Vth)
+        self.Vth = self.Vth + torch.mul(self.dvthdt,torch.sign(torch.relu(OM*self.weight.grad)))
+        self.weight.data = (CR/MVT * self.Ids(self.Vth))**(OM)
         self.weight.data.requires_grad = True
