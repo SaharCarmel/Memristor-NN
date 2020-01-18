@@ -182,6 +182,13 @@ Artificial neural networks (ANN) became a common solution for a wide variety
  of nonvolatile floating-gate memory cells.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Goals and project requirements
 \end_layout
@@ -224,6 +231,20 @@ Simulating a CNN network using the FF layers with the physical features
  developed above.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Alternative solutions
 \end_layout
@@ -244,6 +265,13 @@ Today there are many solutions to engineering problems involving neural
  memory storage is still artificially implemented.
  Therefore, a solution as we propose: a purely analog neuronal network is
  expected to provide significantly higher capabilities than artificial networks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -692,12 +720,778 @@ ay scheme.
 
 \end_layout
 
+\begin_layout Subsection
+Y Flash Memristor
+\end_layout
+
+\begin_layout Standard
+The Y flash memristor is compromised of 2 NMOS transistors with a common
+ floating gate (FG).
+ The control of the floating gate is via the capacitance between the FG
+ and the common drain.
+ As we can see in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Y-flash-NVM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Programming projects/Memristor-NN/Graphics/common gate.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Y flas
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Y-flash-NVM"
+
+\end_inset
+
+h NVM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When a positive voltage is applied on the drain, part of it is applied on
+ the FG thanks to Miller capacitance.
+ If the voltage exceeds the 
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ the cell start to conduct in saturation.
+ When a large voltage is applied on the drain.
+ hot electrons are created in the drain junction.
+ Part of those electrons are injected into the FG which results in a raise
+ of the threshold voltage.
+ This process is the programming process of the cell which modifies the
+ behavior of the memristor.
+ In order to erase the programming from the cell, a high voltage is applied
+ on the source while the drain and the bulk are grounded.
+ In this state there is no current in the device.
+ Hot holes are created in the junction, the hot holes are injected into
+ the FG which lowers the threshold voltage.
+ In order to achieve a certain threshold voltage a several iterations of
+ programming/erasing are needed as we can see in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:-vs-programming"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Programming projects/Memristor-NN/Graphics/prog-erase iterartion.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ vs programming iterations
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:-vs-programming"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see, in order to get to a certain resistance a several programming
+ iterations are needed.
+ We will explore this feature later on.
+\end_layout
+
+\begin_layout Subsection
+Manhattan rule
+\end_layout
+
+\begin_layout Standard
+Neural networks (NN) are compromised of multiple perceptron layers as we
+ can see in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Analog-network-architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ As we can see each neuron is represented by a sum of synapses which are
+ connected to him while the neuron transmits the sum via a non linear function
+ that is defined before hand.
+ The shift to analog usage of neural networks is depicted in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Analog-network-architecture"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+b.
+ Every junction represents a synapse, and weights are represented by resistors.
+ At the exit point we sum the currents in a Op-amp and after it we apply
+ a non linear function.
+ Since the weights of the synapses can be negative the size of a analog
+ network is doubled due to the need to represent each weight by a pair of
+ memristors.
+ Each synapse weight is represented by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W_{ij}=G_{ij}^{+}-G_{ij}^{-}
+\]
+
+\end_inset
+
+ And so we can create negative weights as well.
+ In Fig-c we can see the full architecture of the analog NN.
+ The inputs to the network are the voltages, the output is via the voltage
+ on the output of the op-amp.
+\begin_inset Newline newline
+\end_inset
+
+Part of the learning process of the network, we are needed to modify the
+ weights of it in order to get better performance.
+ In order to create a suitable platform for weights modification we will
+ use Y Flash Nvm Memristor (YFNM).
+ Because there are many updates during every learning iteration and each
+ weights is needed to be updated alone, manhattan update rule suggest to
+ change the weights of the memristors by its sign only and by constant amplitude.
+\begin_inset Formula 
+\[
+\Delta W_{ij}^{M}=sgn\left[\Delta W_{ij}\right]
+\]
+
+\end_inset
+
+ In other words, the change of the synapse weight relates only to the sign
+ of the derivative.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Programming projects/Memristor-NN/Graphics/neural_netowrk_manhattan.png
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analog network architecture
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Analog-network-architecture"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Y flash memristor array
+\end_layout
+
+\begin_layout Standard
+In this section we will describe the method of work using the network shown
+ above.
+ First we will denote that since we are not working with resistors, only
+ only memristors, we are needed to work under a bias voltage higher than
+ 0 because memristors are transistors.
+ So, if we will try to work with voltages under the threshold voltage we
+ will be in depletion mode which carries no current.
+ This restriction dictates a method of work where input voltages are represented
+ by small shifts near the working point.
+ A standard learning and inference flow will goes like that:
+\end_layout
+
+\begin_layout Enumerate
+Input working point voltage and measure output, we will call it 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Transfer inputs to voltages around the working point and feedforward the
+ network.
+\end_layout
+
+\begin_layout Enumerate
+Subtract 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ from the output of the network.
+ This is the actual output.
+\end_layout
+
+\begin_layout Enumerate
+Update network weights by manhttan rule.
+\end_layout
+
+\begin_layout Enumerate
+Repeat 1-4 until convergence.
+\end_layout
+
+\begin_layout Standard
+After the learning process, in order to get the output of the network: section
+ 1-3 are needed to be applied for standard usage.
+ From this algorithm we can foresee that the convergence time for this kind
+ of network will be longer by at least factor 4.
+\begin_inset Newline newline
+\end_inset
+
+Another factor of the analog network is here physical dimensions.
+ Since our network is comprised of flash devices, the devices dimension
+ dictates that number of available devices that can be fabricated on a given
+ piece of silicon.
+ We worked on a 8 by 12 device array.
+ The chip diagram can seen in Fig-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-device-after"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/chip_cropped.jpeg
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The device after dicing and bonding inside a dip20 package
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-device-after"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that the device has 20 legs which are connected to the writing
+ lines and the reading lines.
+ A scheme of the array can be seen in Fig-
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/layout.PNG
+	lyxscale 10
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Memristor array scheme.
+ In blue are reading lines, in brown programming lines.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Software implementation
 \end_layout
 
+\begin_layout Subsection
+Prior work
+\end_layout
+
+\begin_layout Standard
+As a prelude to the central process of the project, we were presented with
+ a verilog model of the Meristor and a basic realization of a single-layer
+ network in matlab.
+ When conducting a simulation of a Memristor-based neuron network consisting
+ of several layers, we encountered a number of problems with existing materials:
+\end_layout
+
+\begin_layout Subsubsection
+Verilog model of the memristor
+\end_layout
+
+\begin_layout Standard
+Model of a verilog , single component simulations were performed in spice
+ programming.
+ The main difficulty in building a Memristor-based deep network simulation
+ in verilog stems from the inability to automate the peripherals spice processes
+ and to get larger scale in the verilog.
+ That is, a transition from a single component simulation to a 100 component
+ simulation connected by a number of different complex structures.
+\end_layout
+
+\begin_layout Subsubsection
+A single layer model of memristors in matlab
+\end_layout
+
+\begin_layout Standard
+Initial code that simulates a single-layer, 4-entry, 3-port meristors network
+ for training and classification of the IRIS database.
+ The simulation assumes a linear model of the Memristor and relates to its
+ physical structure ( resistance values range , update according to Manhattan
+ Rule, etc.).
+ The difficulty of working with this infrastructure is the transition to
+ a broader scale - developing deep networks that require implementation
+ of backpropogation.
+\end_layout
+
+\begin_layout Subsection
+A memristor based neural network on pytorch platform
+\end_layout
+
+\begin_layout Standard
+In this project we made sure to utilize the language capabilities and work
+ under object-oriented paradigms for the future of the project since every
+ physical parameter and every character of the device was introduced as
+ a module that you can choose to use or not when working with the network.
+ In this way, the performance of the network can be examined under diverse
+ conditions and isolate components that impair the network performance according
+ly.
+ The code is also designed so that if you continue to work in the future,
+ the model's reliability can be added and deepened more easily.
+ Each network is represented by a class with feed forward architecture and
+ backpropagation accordingly.
+ First we developed the basic network to which we would compare our results.
+ We chose to develop and test the network rather than compare it with the
+ literature because network performance can be significantly affected by
+ initial conditions and hyper-parameters and we wanted to determine the
+ parameteres to get as accurate a comparison as possible.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Why pytorch?
+\end_layout
+
+\begin_layout Standard
+When it comes to working with neural networks the two common options to
+ use are tensorflow and pytorch.
+ In the project we chose to use the latter.
+ The main reason is because a common and convenient way of using tensorflow
+ is through a module called keras.
+ keras is a superficial module mounted on tf and offers an easy and convenient
+ way to develop a neural network.
+ The main problem with this module is the impossibility of changing the
+ basic elements in the model as the neuron characteristics, weight representatio
+n and more.
+ On the other hand, pytorch is a convenient ground for creating non-standard
+ models as needed in this project.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Code structure
+\end_layout
+
+\begin_layout Paragraph
+Reference model: Ref-net.
+ A full connected NN MNIST classification model.
+\end_layout
+
+\begin_layout Itemize
+2 linear layers: 
+\begin_inset Formula $800\times10,784\times800$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cross entropy loss
+\end_layout
+
+\begin_layout Itemize
+Activation layer: Relu
+\end_layout
+
+\begin_layout Itemize
+Basic weight update rule (no optimizer) 
+\begin_inset Formula 
+\[
+w=w-\alpha\cdot\nabla_{w}L
+\]
+
+\end_inset
+
+ where learning rate 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ adapts every epoch.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/ref_net.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ref net algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Manhttan net based on memristors:
+\end_layout
+
+\begin_layout Itemize
+A layer is a difference layer in order to implement negative weights.
+\end_layout
+
+\begin_layout Itemize
+2 diff layers: 
+\begin_inset Formula $800\times10,784\times800$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cross entropy loss
+\end_layout
+
+\begin_layout Itemize
+Activation layer: Relu
+\end_layout
+
+\begin_layout Itemize
+Weights update by manhattan rule.
+\end_layout
+
+\begin_layout Itemize
+Weights are restricted by physical constraints
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/Memristor_layer.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Memristor layer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/Memristor_layer.PNG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Manhttan net
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Conv net using memristors:
+\end_layout
+
+\begin_layout Itemize
+A resnet-16 pre-trained as the convolution layer
+\end_layout
+
+\begin_layout Itemize
+A fully connected manhttan after it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Graphics/code/CNN.JPG
+	lyxscale 10
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+CNN algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -752,6 +1546,13 @@ Regarding the physical nature of the device, as opposed to neuronal networks
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Summary and Conclusions
 \end_layout
@@ -791,12 +1592,27 @@ Another thing to emphasize is the low network's ability to determine accuracy
  We assume that if we are able to physically reduce the size of the pulse
  we can have a better convergence of the network.
  Alternatively, one can start the network training with a sequence of several
- pulses and decrease the number of pulses in the same way that the lr decreases.
+ pulses and decrease the number of pulses in the same way that the learning
+ rate decreases.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
