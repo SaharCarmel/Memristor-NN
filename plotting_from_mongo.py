@@ -2,6 +2,9 @@ import pymongo
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 
+from sacred import Experiment
+from sacred.utils import apply_backspaces_and_linefeeds
+from sacred.observers import MongoObserver
 
 def plot_results(run_id_1,run_id_2,metric):
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
